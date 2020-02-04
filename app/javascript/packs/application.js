@@ -1,7 +1,6 @@
 // require("@rails/ujs").start()
 // require("@rails/activestorage").start()
-// import "bootstrap";
+import "bootstrap";
 // require("channels")
-require("chartkick")
-require("chart.js")
+
 
