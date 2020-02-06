@@ -1,8 +1,7 @@
 class Report < ApplicationRecord
-  has_many :transactions
+  has_many :transactions, dependent: :destroy
   belongs_to :company
   belongs_to :user
-  has_one_attached :file
 
   validates :format, presence: true
   validates :submission_date, presence: true
