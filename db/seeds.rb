@@ -34,7 +34,7 @@ CSV.foreach(filepath, csv_options) do |row|
     traveller_email: "#{last_name}@heineken.com",
     amount: row[7],
     reservation_mode: row[8],
-    supplier: row[5],
+    supplier: row[10],
     transaction_type: row[5],
     report: report
   )
