@@ -1,11 +1,41 @@
+require 'csv'
+
 class ReportsController < ApplicationController
 
   def new
     @report = Report.new
   end
 
+  def import
+
+
+    filepath = params[:file].path
+    csv_options = { col_sep: ';', quote_char: '"', headers: :first_row }
+
+    report = Report.create(company: current_user.company, user: current_user, format: params[:format], submission_date: Date.today, source: params[:source])
+
+    CSV.foreach(filepath, csv_options) do |row|
+      # Here, row is an array of columns
+      p row
+      first_name = row[2].split(' ')[0]
+      last_name = row[2].split(' ')[1]
+      Transaction.create!(entity: row[0],
+        department: row[9],
+        traveller_first_name: first_name,
+        traveller_last_name: last_name,
+        traveller_email: "#{last_name}@heineken.com",
+        amount: row[7],
+        reservation_mode: row[8],
+        supplier: row[10],
+        transaction_type: row[5],
+        report: report
+      )
+    end
+  end
+
   def create
     @report = Report.new(report_params)
+
     @report.user = current_user
     @report.company = current_user.company
     p @report.valid?
@@ -25,23 +55,5 @@ class ReportsController < ApplicationController
   def destroy
     @report = Report.find(params[:id])
     @report.destroy
-  end
-
-
-  private
-
-  def report_params
-    params.require(:report).permit(:format, :submission_date, :source, :file)
-  end
-
-  def set_transactions(report)
-    # require 'csv'
-
-    # filepath = 'transactions.csv'
-
-    # CSV.foreach(report.file) do |row|
-    # # Here, row is an array of columns
-    #   Transacion.create(entity: #{row[0]} | #{row[2]} | #{row[2]} | #{row[3]} | #{row[4]} | #{row[6]} | #{row[7]} | #{row[8]} | #{row[9]} | #{row[10]}")
-    # end
   end
 end

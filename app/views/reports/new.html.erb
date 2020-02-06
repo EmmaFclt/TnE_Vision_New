@@ -1,15 +1,8 @@
 <h1>upload files</h1>
 <div class="container">
 
-<!-- app/views/articles/_form.html.erb -->
-<%= simple_form_for(@report) do |f| %>
-  <!-- [...] -->
-  <%= f.input :submission_date%>
-  <%= f.input :format%>
-  <%= f.input :source%>
-  <%= f.input :file, as: :file %>
-  <!-- [...] -->
-  <button type="submit" class="btn btn-primary">Upload file!</button>
-<% end %>
-
+<%= form_tag('/import',method: :post, multipart: true) do %>
+<%= file_field_tag :file %>
+<%= submit_tag( "Import" ) %>
+<%end  %>
 </div>
