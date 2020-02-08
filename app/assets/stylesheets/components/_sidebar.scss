@@ -21,36 +21,22 @@
 }
 
 
-/*----------------show sidebar button----------------*/
-#show-sidebar {
-  position: fixed;
-  left: 0;
-  top: 10px;
-  border-radius: 0 4px 4px 0px;
-  width: 35px;
-  transition-delay: 0.3s;
-}
-.page-wrapper.toggled #show-sidebar {
-  left: -40px;
-}
 /*----------------sidebar-wrapper----------------*/
 
 .sidebar-wrapper {
   width: 260px;
   height: 100%;
   max-height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0px;
   z-index: 999;
-  transition: width .5s ease;
+  transition: all .5s ease;
+  min-width: 260px;
 }
 
 .sidebar-wrapper.toggled {
   width: 70px;
-  transition: width .5s ease;
+  transition: all .5s ease;
+  min-width: 70px;
 }
-
 
 .sidebar-wrapper ul {
   list-style-type: none;
@@ -65,8 +51,8 @@
 /*----------------sidebar-content----------------*/
 
 .sidebar-content {
-  max-height: calc(100% - 30px);
-  height: calc(100% - 30px);
+  // max-height: calc(100% - 30px);
+  // height: calc(100% - 30px);
   overflow-y: auto;
   position: relative;
 }
@@ -317,9 +303,6 @@
 /*--------------------------side-footer------------------------------*/
 
 .sidebar-footer {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
   display: flex;
 }
 
@@ -364,13 +347,12 @@
 .page-wrapper .page-content {
   display: inline-block;
   width: 100%;
-  padding-left: 0px;
-  padding-top: 20px;
+  padding: 20px;
 }
 
-.page-wrapper .page-content > div {
-  padding: 20px 40px;
-}
+// .page-wrapper .page-content > div {
+//   padding: 20px 40px;
+// }
 
 .page-wrapper .page-content {
   overflow-x: hidden;
