@@ -1,8 +1,8 @@
-<div class="page-wrapper chiller-theme toggled">
-  <nav id="sidebar" class="sidebar-wrapper">
-    <div class="sidebar-content">
+<div class="page-wrapper d-flex chiller-theme toggled">
+  <nav id="sidebar" class="sidebar-wrapper d-flex flex-column">
+    <div class="sidebar-content flex-grow-1">
       <div class="sidebar-brand">
-        <a href="#">Heineken</a>
+        <!-- <a href="#">Heineken</a> -->
         <div id="close-sidebar">
           <i class="fas fa-times"></i>
         </div>
@@ -114,46 +114,58 @@
     </div>
   </nav>
   <!-- sidebar-wrapper  -->
-  <main class="page-content">
 
-    <h5 class="text-center">Global overview</h5>
-    <hr>
-    <div class="row">
+  <main class="page-content flex-grow-1 p-5">
 
-        <button type="button" class="btn btn-secondary">unite</button>
-        <hr>
-        <button type="button" class="btn btn-secondary">departement</button>
-        <hr>
-        <button type="button" class="btn btn-secondary">Secondary</button>
-        <hr>
-        <button type="button" class="btn btn-secondary">Secondary</button>
+    <h5 class="">Global overview</h5>
+    <div class="d-flex my-4">
+
+
+
+        <button type="button" class="btn btn-secondary mr-2">unite</button>
+        <button type="button" class="btn btn-secondary mx-2">departement</button>
+        <button type="button" class="btn btn-secondary mx-2">Secondary</button>
+        <button type="button" class="btn btn-secondary mx-2">Secondary</button>
+
 
     </div>
 
-    <div class="row">
-      <div class="col-xs-12 col-sm-4 d-flex align-items-end">
-        <%= line_chart [[1,2],[7,8]] %>
+    <div class="row mb-4">
+      <div class="col-xs-12 col-sm-4">
+        <div class="card-chart">
+          <%= line_chart [[1,2],[7,8]] %>
+        </div>
       </div>
 
-      <div class="col-xs-12 col-sm-4 d-flex align-items-end">
-        <canvas id="myChart" width="400" height="400"></canvas>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card-chart">
+          <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
       </div>
 
-      <div class="col-xs-12 col-sm-4 d-flex align-items-end">
-        <canvas id="myChartPie" width="400" height="400" data-keys="<%= @types.keys.join(',') %>"></canvas>
+      <div class="col-xs-12 col-sm-4 ">
+        <div class="card-chart">
+          <canvas id="myChartPie" width="300" height="300" data-keys="<%= @types.keys.join(',') %>"></canvas>
+        </div>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-xs-12 col-sm-4 d-flex align-items-end">
-       <canvas id="bubble-chart" width="400" height="400"></canvas>
+      <div class="col-xs-12 col-sm-4 ">
+        <div class="card-chart">
+        <canvas id="bubble-chart" width="300" height="300"></canvas>
+        </div>
       </div>
-      <div class="col-xs-12 col-sm-4 d-flex align-items-end">
-        <canvas id="marksChart" width="400" height="400"></canvas>
+      <div class="col-xs-12 col-sm-4 ">
+        <div class="card-chart">
+          <canvas id="marksChart" width="400" height="400"></canvas>
+        </div>
       </div>
+ 
       <div class="col-xs-12 col-sm-4 d-flex align-items-end">
        <!-- <canvas id="bar-chart-horizontal" width="400" height="400" data-keys="<%#= @travellers.keys.join(',') %>" data-values="<%#= @travellers.values.join(',') %>"></canvas> -->
        <%= bar_chart @travellers %>
+
       </div>
     </div>
 
