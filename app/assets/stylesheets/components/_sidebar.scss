@@ -67,6 +67,7 @@
   padding: 10px 20px;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
 }
 
 .sidebar-wrapper.toggled .sidebar-brand {
@@ -99,8 +100,10 @@
 /*--------------------sidebar-header----------------------*/
 
 .sidebar-wrapper .sidebar-header {
-  padding: 20px;
+  // padding: 20px;
   display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .sidebar-wrapper.toggled .sidebar-header {
@@ -190,6 +193,7 @@
   text-align:center;
   padding: 0px;
   margin: 15px 0;
+  display: none;
 }
 
 .sidebar-wrapper.toggled li a span {
