@@ -5,4 +5,8 @@ class Company < ApplicationRecord
 
   validates :name, presence: true
   validates :address, presence: true
+
+  def transaction_types
+    self.transactions.group_by { |t| t.transaction_type }.transform_values { |v| v.count }
+  end
 end
