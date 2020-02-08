@@ -1,1 +1,21 @@
 // Specific CSS for your home-page
+body {
+  background: #f9fbfd;
+}
+
+h5 {
+  text-transform: uppercase;
+  font-size: 28px;
+  border-bottom: 1px solid #f18436;
+  color: #0f355f;
+  padding-bottom: 10px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.page-content .btn-secondary {
+  background: none;
+  border: 1px solid #b2b2b2;
+  color: #b2b2b2;
+  border-radius: 5px;
+}
