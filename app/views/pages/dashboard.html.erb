@@ -161,12 +161,15 @@
           <canvas id="marksChart" width="400" height="400"></canvas>
         </div>
       </div>
-      <div class="col-xs-12 col-sm-4 ">
-        <div class="card-chart">
-        <canvas id="bar-chart-horizontal" width="400" height="400"></canvas>
-        </div>
+ 
+      <div class="col-xs-12 col-sm-4 d-flex align-items-end">
+       <!-- <canvas id="bar-chart-horizontal" width="400" height="400" data-keys="<%#= @travellers.keys.join(',') %>" data-values="<%#= @travellers.values.join(',') %>"></canvas> -->
+       <%= bar_chart @travellers %>
+
       </div>
     </div>
+
+    <%#= raise %>
 
   </main>
 
@@ -345,13 +348,13 @@ var radarChart = new Chart(marksCanvas, {
 
 </script>
 
-<script>
+<!-- <script>
 
 
   new Chart(document.getElementById("bar-chart-horizontal"), {
     type: 'horizontalBar',
     data: {
-      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+      labels: document.querySelector('#bar-chart-horizontal').dataset.keys.split(','),
       datasets: [
         {
           label: "Population (millions)",
@@ -371,7 +374,8 @@ var radarChart = new Chart(marksCanvas, {
                 'rgba(153, 102, 255, 1)',
                 'rgba(255, 159, 64, 1)'
             ],
-          data: [2478,5267,734,784,433]
+          data: document.querySelector('#bar-chart-horizontal').dataset.values.split(',')
+                                                               .map(i => parseInt(i, 10))
         }
       ]
     },
@@ -383,4 +387,4 @@ var radarChart = new Chart(marksCanvas, {
       }
     }
 });
-</script>
+</script> -->

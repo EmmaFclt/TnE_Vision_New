@@ -10,11 +10,13 @@ class PagesController < ApplicationController
       #   @transactions = @transactions.where(entity: params[:filter][:entity])
       # end
 
-
-
     # end
 
     @types = @transactions.group_by { |t| t.transaction_type }
                           .transform_values { |v| v.count }
+
+    @travellers = @transactions.group_by{ |t| t.traveller_last_name }
+                          .transform_values{|v| v.count }.sort_by{ |k, v| -v }[0..4].to_h
   end
 end
+
