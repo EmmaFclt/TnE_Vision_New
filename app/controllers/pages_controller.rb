@@ -19,4 +19,3 @@ class PagesController < ApplicationController
                           .transform_values{|v| v.count }.sort_by{ |k, v| -v }[0..4].to_h
   end
 end
-
