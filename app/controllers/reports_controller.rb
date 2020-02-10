@@ -10,7 +10,7 @@ class ReportsController < ApplicationController
     filepath = params[:file].path
     csv_options = { col_sep: ';', quote_char: '"', headers: :first_row }
 
-    report = Report.create!(company: current_user.company, user: current_user, format: 'csv', submission_date: Date.today, source: 'csv')
+    report = Report.create!(company: current_user.company, user: current_user, format: params[:source], submission_date: Date.today, source: params[:source])
 
     CSV.foreach(filepath, csv_options) do |row|
       # Here, row is an array of columns

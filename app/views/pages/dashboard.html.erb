@@ -2,6 +2,7 @@
   <nav id="sidebar" class="sidebar-wrapper d-flex flex-column">
     <div class="sidebar-content flex-grow-1">
       <div class="sidebar-brand">
+
         <!-- <a href="#">Heineken</a> -->
         <div id="close-sidebar">
           <i class="fas fa-times"></i>
@@ -16,7 +17,7 @@
           <span class="user-name">Christian
             <strong>Preda</strong>
           </span>
-          <span class="user-role">Administrator</span>
+          <span class="user-role">Administrateur</span>
           <span class="user-status">
             <i class="fa fa-circle"></i>
             <span>Online</span>
@@ -40,36 +41,36 @@
       <div class="sidebar-menu">
         <ul>
           <li class="header-menu">
-            <span>General</span>
+            <span>Applications</span>
           </li>
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="fa fa-tachometer-alt"></i>
-              <span>Dashboard</span>
+              <span>Dép. Globales</span>
             </a>
           </li>
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="fa fa-shopping-cart"></i>
-              <span>E-commerce</span>
+              <span>Bien-être</span>
             </a>
           </li>
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="far fa-gem"></i>
-              <span>Components</span>
+              <span>Comportements</span>
             </a>
           </li>
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="fa fa-chart-line"></i>
-              <span>Charts</span>
+              <span>Budget</span>
             </a>
           </li>
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="fa fa-globe"></i>
-              <span>Maps</span>
+              <span>RSE</span>
             </a>
           </li>
         </ul>
@@ -82,22 +83,23 @@
           </li>
           <li>
             <a href="#">
-              <i class="fa fa-cog"></i>
-              <span>Settings</span>
+              <i class="fa fa-folder"></i>
+              <span>Ajouter un fichier</span>
             </a>
           </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-cog"></i>
+              <span>Profile</span>
+            </a>
+          <!-- </li>
           <li>
             <a href="#">
               <i class="fa fa-calendar"></i>
               <span>Calendar</span>
             </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-folder"></i>
-              <span>Examples</span>
-            </a>
-          </li>
+          </li> -->
+
         </ul>
       </div>
       <!-- sidebar-menu  -->
@@ -121,14 +123,15 @@
       <%= image_tag("Logo-TNE-RVB-small.png", :alt => "#", :class => "logo") %>
     </div>
 <hr>
+  
     <div class="d-flex my-4">
 
 
 
-        <button type="button" class="btn btn-secondary mr-2">unite</button>
-        <button type="button" class="btn btn-secondary mx-2">departement</button>
-        <button type="button" class="btn btn-secondary mx-2">Secondary</button>
-        <button type="button" class="btn btn-secondary mx-2">Secondary</button>
+        <button type="button" class="btn btn-secondary mr-2">Entités</button>
+        <button type="button" class="btn btn-secondary mx-2">Dates</button>
+        <button type="button" class="btn btn-secondary mx-2">Conformité</button>
+        <button type="button" class="btn btn-secondary mx-2">Services</button>
 
 
     </div>
@@ -148,7 +151,8 @@
 
       <div class="col-xs-12 col-sm-4 ">
         <div class="card-chart">
-          <canvas id="myChartPie" width="300" height="300" data-keys="<%= @types.keys.join(',') %>"></canvas>
+          <!-- <canvas id="myChartPie" width="300" height="300" data-keys="<%= @types.keys.join(',') %>"></canvas> -->
+        <%= pie_chart @types %>
         </div>
       </div>
     </div>
@@ -164,12 +168,15 @@
           <canvas id="marksChart" width="400" height="400"></canvas>
         </div>
       </div>
-      <div class="col-xs-12 col-sm-4 ">
-        <div class="card-chart">
-        <canvas id="bar-chart-horizontal" width="400" height="400"></canvas>
-        </div>
+
+      <div class="col-xs-12 col-sm-4 d-flex align-items-end">
+       <!-- <canvas id="bar-chart-horizontal" width="400" height="400" data-keys="<%#= @travellers.keys.join(',') %>" data-values="<%#= @travellers.values.join(',') %>"></canvas> -->
+       <%= bar_chart @travellers %>
+
       </div>
     </div>
+
+    <%#= raise %>
 
   </main>
 
@@ -178,7 +185,7 @@
 
   <!-- /#wrapper -->
 
-<script>
+<!-- <script>
 var ctx = document.getElementById('myChartPie');
 var myPieChart = new Chart(ctx, {
     type: 'pie',
@@ -216,7 +223,7 @@ var myPieChart = new Chart(ctx, {
         }
     }
 });
-</script>
+</script> -->
 
 <script>
 var ctx = document.getElementById('myChart').getContext('2d');
@@ -348,13 +355,13 @@ var radarChart = new Chart(marksCanvas, {
 
 </script>
 
-<script>
+<!-- <script>
 
 
   new Chart(document.getElementById("bar-chart-horizontal"), {
     type: 'horizontalBar',
     data: {
-      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+      labels: document.querySelector('#bar-chart-horizontal').dataset.keys.split(','),
       datasets: [
         {
           label: "Population (millions)",
@@ -374,7 +381,8 @@ var radarChart = new Chart(marksCanvas, {
                 'rgba(153, 102, 255, 1)',
                 'rgba(255, 159, 64, 1)'
             ],
-          data: [2478,5267,734,784,433]
+          data: document.querySelector('#bar-chart-horizontal').dataset.values.split(',')
+                                                               .map(i => parseInt(i, 10))
         }
       ]
     },
@@ -386,4 +394,4 @@ var radarChart = new Chart(marksCanvas, {
       }
     }
 });
-</script>
+</script> -->

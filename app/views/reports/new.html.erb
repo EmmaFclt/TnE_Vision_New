@@ -1,9 +1,13 @@
 <h1>upload files</h1>
 <div class="container">
+  <%= form_tag('/import',method: :post, multipart: true) do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag( "Import" ) %>
 
-<%= form_tag('/import',method: :post, multipart: true) do %>
-<%= file_field_tag :file %>
-<%= submit_tag( "Import" ) %>
+    <%= label_tag 'format' %>
+    <%= text_field_tag :format %>
+    <%= label_tag 'source' %>
+    <%= text_field_tag :source %>
 
-<%end  %>
+  <% end %>
 </div>
