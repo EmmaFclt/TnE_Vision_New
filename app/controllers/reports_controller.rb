@@ -34,7 +34,9 @@ class ReportsController < ApplicationController
         report: report,
         compliancy: row[11] == 'TRUE'
       )
+
     end
+      redirect_to root_path
   end
 
   def create
