@@ -36,9 +36,11 @@ CSV.foreach(filepath, csv_options) do |row|
     reservation_mode: row[8],
     supplier: row[10],
     transaction_type: row[5],
-    report: report
-  )
-end
+    report: report,
+    compliancy: row[11] == 'TRUE',
+    cities: row [12],
+    )
+  end
 
 
 p 'data has been created'
