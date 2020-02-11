@@ -18,4 +18,20 @@ class PagesController < ApplicationController
     @travellers = @transactions.group_by{ |t| t.traveller_last_name }
                           .transform_values{|v| v.count }.sort_by{ |k, v| -v }[0..4].to_h
   end
+
+  def wellbeing
+
+  end
+
+  def behaviour
+
+  end
+
+  def budget
+
+  end
+
+  def rse
+
+  end
 end
