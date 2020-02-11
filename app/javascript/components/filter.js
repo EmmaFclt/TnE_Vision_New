@@ -1,6 +1,6 @@
 const popUpFilter = () => {
-  filterClick = document.getElementByClass("filter");
-  filterClick.addEventListener("click", (event) => {
+ const dateFilter = document.getElementById("date-filter");
+  dateFilter.addEventListener("click", (event) => {
     event.currentTarget.innerText = 'Hold still...';
   });
 };
