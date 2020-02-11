@@ -4,13 +4,15 @@ class PagesController < ApplicationController
     @company = current_user.company
     @transactions = @company.transactions
 
-    # if params[:filter]
+    if params[:filter]
 
-      # if params[:filter][:entity]
-      #   @transactions = @transactions.where(entity: params[:filter][:entity])
-      # end
+      if params[:filter][:compliancy] == '1'
+        @transactions = @transactions.where(compliancy: true)
+      end
 
-    # end
+
+
+    end
 
     @types = @transactions.group_by { |t| t.transaction_type }
                           .transform_values { |v| v.count }

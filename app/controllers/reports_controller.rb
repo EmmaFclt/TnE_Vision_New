@@ -14,7 +14,12 @@ class ReportsController < ApplicationController
 
     CSV.foreach(filepath, csv_options) do |row|
       # Here, row is an array of columns
-      p row
+      # if row[11] == 'TRUE'
+      #   status = true
+      # else
+      #   status = false
+      # end
+
       first_name = row[2].split(' ')[0]
       last_name = row[2].split(' ')[1]
       Transaction.create!(entity: row[0],
@@ -26,7 +31,8 @@ class ReportsController < ApplicationController
         reservation_mode: row[8],
         supplier: row[10],
         transaction_type: row[5],
-        report: report
+        report: report,
+        compliancy: row[11] == 'TRUE'
       )
     end
   end

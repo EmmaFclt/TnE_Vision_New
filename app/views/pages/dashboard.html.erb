@@ -12,7 +12,10 @@
     <div class="d-flex my-4">
 
 
-
+        <%= simple_form_for :filter, url: root_path, method: :get do |f| %>
+          <%= f.input :compliancy, as: :boolean %>
+          <%= f.submit %>
+        <% end %>
         <button type="button" class="btn btn-secondary mr-2" id="entity-filter">Entités</button>
         <button type="button" class="btn btn-secondary mx-2" id="date-filter">Dates</button>
         <button type="button" class="btn btn-secondary mx-2" id="compliancy-filter">Conformité</button>
