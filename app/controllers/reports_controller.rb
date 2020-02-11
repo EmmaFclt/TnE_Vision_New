@@ -35,7 +35,9 @@ class ReportsController < ApplicationController
         compliancy: row[11] == 'TRUE',
         cities: row [12],
       )
+
     end
+      redirect_to root_path
   end
 
   def create

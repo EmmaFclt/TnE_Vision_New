@@ -3,6 +3,10 @@ class PagesController < ApplicationController
   def dashboard
     @company = current_user.company
     @transactions = @company.transactions
+    @entities = []
+    @transactions.each do |t|
+      @entities.push(t.entity) unless @entities.include?(t.entity)
+    end
 
     if params[:filter]
 
@@ -10,7 +14,10 @@ class PagesController < ApplicationController
         @transactions = @transactions.where(compliancy: true)
       end
 
+      if params[:filter][:entity]
 
+        @transactions = @transactions.where(entity: params[:filter][:entity])
+      end
 
     end
 
