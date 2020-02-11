@@ -55,6 +55,7 @@
       </div>
 
       <div class="col-xs-12 col-sm-4 d-flex align-items-end">
+      <div class="card-chart">
        <!-- <canvas id="bar-chart-horizontal" width="400" height="400" data-keys="<%#= @travellers.keys.join(',') %>" data-values="<%#= @travellers.values.join(',') %>"></canvas> -->
         <div class="card-chart">
        <%= bar_chart @travellers, colors:["#dd0", "#dd0", "#aad", "#fb2"] %>
