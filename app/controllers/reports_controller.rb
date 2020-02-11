@@ -33,7 +33,7 @@ class ReportsController < ApplicationController
         transaction_type: row[5],
         report: report,
         compliancy: row[11] == 'TRUE',
-        cities: [12],
+        cities: row [12],
       )
     end
   end
