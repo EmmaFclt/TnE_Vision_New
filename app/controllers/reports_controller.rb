@@ -32,7 +32,8 @@ class ReportsController < ApplicationController
         supplier: row[10],
         transaction_type: row[5],
         report: report,
-        compliancy: row[11] == 'TRUE'
+        compliancy: row[11] == 'TRUE',
+        cities: [12],
       )
     end
   end

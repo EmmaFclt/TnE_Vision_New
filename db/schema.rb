@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_01_152834) do
+ActiveRecord::Schema.define(version: 2020_02_11_193112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2020_02_01_152834) do
     t.bigint "report_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "cities"
     t.index ["report_id"], name: "index_transactions_on_report_id"
   end
 
