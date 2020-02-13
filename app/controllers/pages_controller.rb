@@ -44,7 +44,12 @@ class PagesController < ApplicationController
 
     @cities = @transactions.group_by{ |t| t.cities }
                           .transform_values{|v| v.count }.sort_by{ |k, v| -v }[0..4].to_h
+
+    @transactions_count_week = @transactions.group_by_day_of_week(:start_date, format: "%a").count
+
+
   end
+
 
   def wellbeing
 

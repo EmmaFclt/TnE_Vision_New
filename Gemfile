@@ -20,6 +20,7 @@ gem 'webpacker'
 gem 'cloudinary', '~> 1.12.0'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'flatpickr'
+gem 'groupdate'
 
 
 group :development do

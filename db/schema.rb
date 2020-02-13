@@ -74,7 +74,8 @@ ActiveRecord::Schema.define(version: 2020_02_12_134233) do
     t.datetime "updated_at", null: false
     t.string "cities"
     t.string "service"
-    t.date "travel_date"
+    t.date "start_date"
+    t.date "end_date"
     t.index ["report_id"], name: "index_transactions_on_report_id"
   end
 
