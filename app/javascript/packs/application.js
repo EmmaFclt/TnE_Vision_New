@@ -2,7 +2,7 @@
 // require("@rails/activestorage").start()
 import "bootstrap";
 import {slideSidebar} from "../components/sidebar";
-import {dateFilter, entityFilter, compliancyFilter, serviceFilter} from "../components/filter";
+// import {dateFilter, entityFilter, compliancyFilter, serviceFilter} from "../components/filter";
 // require("channels")
 // import { maFonction } from 'monFichier'
 
@@ -29,9 +29,9 @@ import {dateFilter, entityFilter, compliancyFilter, serviceFilter} from "../comp
 // });
 // Chartkick.options[:content_for] = :charts_js
 slideSidebar();
-dateFilter();
-entityFilter();
-compliancyFilter();
-serviceFilter();
+// // dateFilter();
+// entityFilter();
+// compliancyFilter();
+// serviceFilter();
 
 

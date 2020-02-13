@@ -42,11 +42,21 @@
             </a>
           </div>
         </div>
+        <div class="btn mx-2 dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Date
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item date" href="#">
+              <%= f.input :travel_date, as: :date%>
+            </a>
+          </div>
+        </div>
 <!--         <button type="button" class="btn btn-secondary mr-2" id="entity-filter">Entités</button>
  -->
-        <div class="btn mx-2">
+       <!--  <div class="btn mx-2">
           <button type="button" class="btn btn-secondary mx-2" id="date-filter">Dates</button>
-        </div>
+        </div> -->
 <!--    <button type="button" class="btn btn-secondary mx-2" id="compliancy-filter">Conformité</button>
  -->
 <!--         <button type="button" class="btn btn-secondary mx-2" id="service-filter">Services</button>

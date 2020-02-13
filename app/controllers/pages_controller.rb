@@ -29,6 +29,10 @@ class PagesController < ApplicationController
       if params[:filter][:service]
         @transactions = @transactions.where(service: params[:filter][:service])
       end
+
+      if params[:filter][:travel_date]
+        @transactions = @transactions.where('travel_date: >= params[:filter][:service]')
+      end
     end
 
     @types = @transactions.group_by { |t| t.transaction_type }
