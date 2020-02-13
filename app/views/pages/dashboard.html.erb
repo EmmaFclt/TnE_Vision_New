@@ -70,7 +70,7 @@
     <div class="row mb-4">
       <div class="col-xs-12 col-sm-4">
         <div class="card-chart">
-          <%= line_chart [[1,2],[7,8]], colors: ["#f52", "#aad"] %>
+          <%= geo_chart @company.transactions.group(:countries).count%>
         </div>
       </div>
 
@@ -107,7 +107,7 @@
       <div class="card-chart">
        <!-- <canvas id="bar-chart-horizontal" width="400" height="400" data-keys="<%#= @travellers.keys.join(',') %>" data-values="<%#= @travellers.values.join(',') %>"></canvas> -->
         <div class="card-chart">
-       <%= bar_chart @travellers, colors:["#dd0", "#dd0", "#aad", "#fb2"] %>
+       <%= bar_chart @company.top_5_travellers, colors:["#dd0", "#dd0", "#aad", "#fb2"] %>
         </div>
       </div>
     </div>
