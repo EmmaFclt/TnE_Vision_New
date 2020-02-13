@@ -1,13 +1,25 @@
-<h1>upload files</h1>
-<div class="container">
-  <%= form_tag('/import',method: :post, multipart: true) do %>
-    <%= file_field_tag :file %>
-    <%= submit_tag( "Import" ) %>
-
-    <%= label_tag 'format' %>
-    <%= text_field_tag :format %>
-    <%= label_tag 'source' %>
-    <%= text_field_tag :source %>
-
-  <% end %>
-</div>
+<main class="page-content flex-grow-1 p-5 d-block">
+  <div class="d-flex justify-content-between align-items-center">
+      <h5>Chargement d'un nouveau fichier</h5>
+      <%= image_tag("Logo-TNE-RVB-small.png", :alt => "#", :class => "logo") %>
+  </div>
+  <hr>
+    <div class="card-chart">
+      <div class="mb-4">
+        <%= form_tag('/import',method: :post, multipart: true) do %>
+        <%= file_field_tag :file %>
+      </div>
+      <div class="mb-4">
+        <%= label_tag 'format' %>
+        <%= text_field_tag :format %>
+      </div>
+      <div class="mb-4">
+        <%= label_tag 'source' %>
+        <%= text_field_tag :source %>
+      </div>
+      <div class="mb-4">
+        <%= submit_tag( "Importer" , class: "btn-primary" ) %>
+        <% end %>
+      </div>
+    </div>
+</main>
