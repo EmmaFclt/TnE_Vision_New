@@ -24,8 +24,6 @@ class PagesController < ApplicationController
     @types = @transactions.group_by { |t| t.transaction_type }
                           .transform_values { |v| v.count }
 
-    @travellers = @transactions.group_by{ |t| t.traveller_last_name }
-                          .transform_values{|v| v.count }.sort_by{ |k, v| -v }[0..4].to_h
 
 
     @cities = @transactions.group_by{ |t| t.cities }
@@ -35,7 +33,6 @@ class PagesController < ApplicationController
 
 
   end
-
 
   def wellbeing
 

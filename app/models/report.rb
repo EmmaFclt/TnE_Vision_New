@@ -6,4 +6,12 @@ class Report < ApplicationRecord
   validates :format, presence: true
   validates :submission_date, presence: true
   validates :source, presence: true
+
+  # before_save :capitalize_format
+
+  # def capitalize_format
+  #   self.format = self.format.capitalize
+  # end
 end
+
+
