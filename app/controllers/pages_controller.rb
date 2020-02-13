@@ -52,4 +52,8 @@ class PagesController < ApplicationController
   def rse
 
   end
+
+  def profil
+
+  end
 end

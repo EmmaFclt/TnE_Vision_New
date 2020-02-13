@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get 'behaviour', to: 'pages#behaviour'
     get 'budget', to: 'pages#budget'
     get 'rse', to: 'pages#rse'
+    get 'profil', to: 'pages#profil'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :reports, only: %i[new create index destroy]
