@@ -38,9 +38,11 @@ User.create!(first_name:"Christian", last_name:"Preda", password:"123456", email
 #     transaction_type: row[5],
 #     report: report,
 #     compliancy: row[11] == 'TRUE',
+#     service: row [13],
 #     cities: row [12],
 #     start_date: row[3],
 #     end_date: row[4],
+#     countries: row[14]
 #     )
 #   end
 
