@@ -11,24 +11,60 @@
 
     <div class="d-flex my-4">
 
-
-        <%= simple_form_for :filter, url: root_path, method: :get do |f| %>
-          <%= f.input :compliancy, as: :boolean %>
-          <%= f.submit %>
-        <% end %>
-
-        <%= simple_form_for :filter, url: root_path, method: :get do |f| %>
-          <%= f.input :entity, :collection => @entities, wrapper_html: { class: 'form-group' }, :as => :check_boxes, :multiple => true, include_hidden: false %>
-          <%= f.submit %>
-        <% end %>
-
+      <%= simple_form_for :filter, url: root_path, method: :get do |f| %>
+        <div class="btn mx-2 dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Conformité
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">
+              <%= f.input :compliancy, as: :boolean %>
+            </a>
+          </div>
+        </div>
+        <div class="btn mx-2 dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Entité
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">
+              <%= f.input :entity, :collection => @entities, wrapper_html: { class: 'form-group' }, :as => :check_boxes, :multiple => true, include_hidden: false %>
+            </a>
+          </div>
+        </div>
+        <div class="btn mx-2 dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Service
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">
+              <%= f.input :service, :collection => @services, wrapper_html: { class: 'form-group' }, :as => :check_boxes, :multiple => true, include_hidden: false %>
+            </a>
+          </div>
+        </div>
+        <div class="btn mx-2 dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Date
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item date" href="#">
+              <%= f.input :travel_date, as: :date%>
+            </a>
+          </div>
+        </div>
 <!--         <button type="button" class="btn btn-secondary mr-2" id="entity-filter">Entités</button>
- -->        <button type="button" class="btn btn-secondary mx-2" id="date-filter">Dates</button>
+ -->
+       <!--  <div class="btn mx-2">
+          <button type="button" class="btn btn-secondary mx-2" id="date-filter">Dates</button>
+        </div> -->
 <!--    <button type="button" class="btn btn-secondary mx-2" id="compliancy-filter">Conformité</button>
  -->
-        <button type="button" class="btn btn-secondary mx-2" id="service-filter">Services</button>
-
-
+<!--         <button type="button" class="btn btn-secondary mx-2" id="service-filter">Services</button>
+ -->
+        <div class="btn">
+          <%= f.submit 'Filtrer', :class => "btn btn-primary mx-2" %>
+          <% end %>
+        </div>
     </div>
 
     <div class="row mb-4">
