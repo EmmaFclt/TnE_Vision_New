@@ -34,6 +34,8 @@ class ReportsController < ApplicationController
         report: report,
         compliancy: row[11] == 'TRUE',
         cities: row [12],
+        start_date: row[3],
+        end_date: row[4],
       )
     end
   end
