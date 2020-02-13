@@ -30,8 +30,8 @@ class PagesController < ApplicationController
         @transactions = @transactions.where(service: params[:filter][:service])
       end
 
-      if params[:filter][:travel_date]
-        @transactions = @transactions.where('travel_date: >= params[:filter][:service]')
+      if params[:filter][:start_date]
+        @transactions = @transactions.where('start_date: >= params[:filter][:start_date]')
       end
     end
 
