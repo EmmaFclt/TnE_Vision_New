@@ -485,3 +485,18 @@
 .chiller-theme .sidebar-footer>a:last-child {
     border-right: none;
 }
+
+
+.modal-content {
+  height: 50%;
+
+}
+
+.modal.show .modal-dialog{
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  width: 60%;
+
+
+}
