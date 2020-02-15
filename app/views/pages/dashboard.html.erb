@@ -83,7 +83,7 @@
         <div class="card-chart">
           <h3>Type of spend</h3>
           <!-- <canvas id="myChartPie" width="300" height="300" data-keys="<%= @types.keys.join(',') %>"></canvas> -->
-          <%= pie_chart @types, { colors:["#fea", "#9be", "#aad", "#fb2"], download: true } %>
+          <%= pie_chart @types, { download: true, donut: true} %>
         </div>
       </div>
     </div>
@@ -98,7 +98,7 @@
         </div>
       </div>
 
-      <div class="col-xs-12 col-sm-4 d-flex align-items-end">
+      <div class="col-xs-12 col-sm-4">
         <div class="card-chart">
           <h3>Cities</h3>
           <%=column_chart @cities, download: true %>
