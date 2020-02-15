@@ -9,6 +9,7 @@ gem 'puma'
 gem 'rails', '5.2.4.1'
 gem 'redis'
 gem "chartkick"
+gem "jquery-rails"
 #gem 'highcharts-rails', '~> 6.0', '>= 6.0.3'
 
 gem 'autoprefixer-rails'
