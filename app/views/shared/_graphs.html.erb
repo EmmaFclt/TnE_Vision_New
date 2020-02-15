@@ -60,25 +60,38 @@
   <!-- MODAL SYSTEM -->
   <div class="modal fade" id="Top_travellers_card" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
+      <div class="modal-content" style="width: 150%">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Top Voyageurs</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <%= link_to addfavorite_path(params: { graph: 'top-travellers' }) do %>
-              <% if current_user.favorites.include?('top-travellers') %>
-                <i class="fas fa-heart"></i>
-              <% else %>
-                <i class="far fa-heart"></i>
-              <% end %>
-          <% end %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <div class="row">
+            <div class="col-8">
+              <%= bar_chart @company.top_5_travellers, {colors:["#dd0", "#dd0", "#aad", "#fb2"], download: true }%>
+            </div>
+            <div class="col-4">
+              <h3>Description</h3>
+              <br>
+              <p > Cumul du nombre de prestations achetées par voyageur</p>
+              <div class="icons-right">
+                <div>
+                  <%= link_to addfavorite_path(params: { graph: 'top-travellers' }) do %>
+                      <% if current_user.favorites.include?('top-travellers') %>
+                        <i class="fas fa-heart"></i>
+                      <% else %>
+                        <i class="far fa-heart"></i>
+                      <% end %>
+                  <% end %>
+                </div>
+                <div>
+                  <i class="fas fa-at"> </i>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
