@@ -114,12 +114,31 @@
     </div>
     <!-- sidebar-content  -->
     <div class="sidebar-footer">
-      <a class='notification'href="#">
+       <a class="notification" href="" data-toggle="modal" data-target="#Enhancements_card">
+
         <i class="fa fa-bell"></i>
       </a>
+
       <%= link_to destroy_user_session_path, method: :delete do %>
         <i class="fas fa-power-off"></i>
       <% end %>
     </div>
   </nav>
+
+  <!-- MODAL SYSTEM -->
+  <div class="modal fade" id="Enhancements_card" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <h1 class="row-justify-content-center">Alertes</h1>
+         <p>Ce mois vous avez depensé 30% de plus que le mois dernier </p>
+         <p>Vous avez diminué vos depenses sur le moyen de transport....Bravo! </p>
+         <h3>Recommandations</h3>
+         <p> Favoriser le train à l'avion</p>
+
+      </div>
+    </div>
+  </div>
+</div>
 <% end %>
