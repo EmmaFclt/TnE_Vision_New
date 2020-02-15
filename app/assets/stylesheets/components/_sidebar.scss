@@ -487,12 +487,13 @@
 }
 
 
-.modal-content {
+.modal-notification {
   height: 50%;
 
 }
 
-.modal.show .modal-dialog{
+
+.modal.show .sidebar-modal{
   height: 100vh;
   display: flex;
   align-items: flex-end;
