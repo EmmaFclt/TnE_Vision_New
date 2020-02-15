@@ -74,4 +74,8 @@ class PagesController < ApplicationController
   def profil
 
   end
+
+  def favorite
+    raise
+  end
 end
