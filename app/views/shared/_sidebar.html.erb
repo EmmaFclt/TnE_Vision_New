@@ -75,6 +75,7 @@
         </li>
       </ul>
     </div>
+
     <div class="sidebar-menu">
       <ul>
 
@@ -106,11 +107,11 @@
     </div>
     <!-- sidebar-content  -->
     <div class="sidebar-footer">
-      <a href="#">
+      <a class='notification'href="#">
         <i class="fa fa-bell"></i>
       </a>
-      <a href="#">
-        <i class="fa fa-power-off"></i>
-      </a>
+      <%= link_to destroy_user_session_path, method: :delete do %>
+        <i class="fas fa-power-off"></i>
+      <% end %>
     </div>
   </nav>
