@@ -1,8 +1,8 @@
   <% if @company.transactions.count != 0 %>
-
     <div class="row mb-4">
 
-      <div class="col-xs-12 col-sm-4 chart-col">
+    <% if current_user.favorites.include?('top-travellers') || params[:action] == 'dashboard' %>
+      <div class="col-xs-12 col-sm-4">
         <div class="card-chart" data-toggle="modal" data-target="#Top_travellers_card">
           <div class="d-flex justify-content-between align-items-center">
             <h6>Top 5 voyageurs</h6>
@@ -10,38 +10,46 @@
           <%= bar_chart @company.top_5_travellers, {colors:["#dd0", "#dd0", "#aad", "#fb2"], download: true } %>
         </div>
       </div>
+    <% end %>
 
-      <div class="col-xs-12 col-sm-4 not-favorite chart-col">
+    <% if current_user.favorites.include?('nb-reservation-per-day') || params[:action] == 'dashboard' %>
+      <div class="col-xs-12 col-sm-4">
         <div class="card-chart" data-toggle="modal" data-target="#Nb_reservation_per_day_card">
           <h6>Nombre de réservation par jour</h6>
           <%= column_chart @transactions_count_week, download: true %>
         </div>
       </div>
+    <% end %>
 
-      <div class="col-xs-12 col-sm-4 not-favorite chart-col<%= user.favoris.include?('piechart') ? "visible" : "not-favorite" %>" data-favoris="piechart">
+    <% if current_user.favorites.include?('type-spendings') || params[:action] == 'dashboard' %>
+      <div class="col-xs-12 col-sm-4">
         <div class="card-chart" data-toggle="modal" data-target="#Type_spendings_card">
           <h6>Catégorie de dépense</h6>
           <%= pie_chart @types, { download: true, donut: true} %>
         </div>
       </div>
+    <% end %>
 
     </div>
 
     <div class="row">
-
-      <div class="col-xs-12 col-sm-8 not-favorite chart-col">
-        <div class="card-chart" data-toggle="modal" data-target="#Travel_destination_card">
-          <h6>Destination des voyages</h6>
-          <%= geo_chart @company.transactions.group(:countries).count, download: true %>
+      <% if current_user.favorites.include?('travel-destination') || params[:action] == 'dashboard' %>
+        <div class="col-xs-12 col-sm-8">
+          <div class="card-chart" data-toggle="modal" data-target="#Travel_destination_card">
+            <h6>Destination des voyages</h6>
+            <%= geo_chart @company.transactions.group(:countries).count, download: true %>
+          </div>
         </div>
-      </div>
+      <% end %>
 
-      <div class="col-xs-12 col-sm-4 d-flex align-items-end not-favorite chart-col">
-        <div class="card-chart" data-toggle="modal" data-target="#Top_cities_card">
-          <h6>Top villes</h6>
-          <%=column_chart @cities, download: true %>
+      <% if current_user.favorites.include?('top-cities') || params[:action] == 'dashboard' %>
+        <div class="col-xs-12 col-sm-4 d-flex align-items-end">
+          <div class="card-chart" data-toggle="modal" data-target="#Top_cities_card">
+            <h6>Top villes</h6>
+            <%=column_chart @cities, download: true %>
+          </div>
         </div>
-      </div>
+      <% end %>
 
     </div>
 
@@ -60,7 +68,13 @@
           </button>
         </div>
         <div class="modal-body">
-          <i class="far fa-heart"></i>
+          <%= link_to addfavorite_path(params: { graph: 'top-travellers' }) do %>
+              <% if current_user.favorites.include?('top-travellers') %>
+                <i class="fas fa-heart"></i>
+              <% else %>
+                <i class="far fa-heart"></i>
+              <% end %>
+          <% end %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -80,7 +94,13 @@
           </button>
         </div>
         <div class="modal-body">
-          <i class="far fa-heart"></i>
+          <%= link_to addfavorite_path(params: { graph: 'nb-reservation-per-day' }) do %>
+              <% if current_user.favorites.include?('nb-reservation-per-day') %>
+                <i class="fas fa-heart"></i>
+              <% else %>
+                <i class="far fa-heart"></i>
+              <% end %>
+          <% end %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -100,7 +120,13 @@
           </button>
         </div>
         <div class="modal-body">
-          <i class="far fa-heart"></i>
+          <%= link_to addfavorite_path(params: { graph: 'type-spendings' }) do %>
+              <% if current_user.favorites.include?('type-spendings') %>
+                <i class="fas fa-heart"></i>
+              <% else %>
+                <i class="far fa-heart"></i>
+              <% end %>
+          <% end %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -120,9 +146,13 @@
           </button>
         </div>
         <div class="modal-body">
-          <%#= link_to favorite_path(params: { graph: 'travel-destination' }) do %>
-            <i class="far fa-heart"></i>
-          <%# end %>
+          <%= link_to addfavorite_path(params: { graph: 'travel-destination' }) do %>
+            <% if current_user.favorites.include?('travel-destination') %>
+                <i class="fas fa-heart"></i>
+              <% else %>
+                <i class="far fa-heart"></i>
+              <% end %>
+          <% end %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -142,7 +172,13 @@
           </button>
         </div>
         <div class="modal-body">
-          <i class="far fa-heart"></i>
+          <%= link_to addfavorite_path(params: { graph: 'top-cities' }) do %>
+              <% if current_user.favorites.include?('top-cities') %>
+                <i class="fas fa-heart"></i>
+              <% else %>
+                <i class="far fa-heart"></i>
+              <% end %>
+          <% end %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

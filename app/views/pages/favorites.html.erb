@@ -1,13 +1,15 @@
 <main class="page-content flex-grow-1 p-5 d-block">
-    <div class="d-flex justify-content-between align-items-center">
-      <h5>Budget</h5>
-      <%= image_tag("Logo-TNE-RVB-small.png", :alt => "#", :class => "logo") %>
-    </div>
-<hr>
+  <div class="d-flex justify-content-between align-items-center">
+    <h5>Favoris</h5>
+    <%= image_tag("Logo-TNE-RVB-small.png", :alt => "#", :class => "logo") %>
+  </div>
+
+  <hr>
+<%= render 'shared/graphs' %>
 
 <% if current_user.favorites.include?('cumul_total_spend') || params[:action] == 'budget' %>
   <div class="col-xs-12 col-sm-12">
-    <div class="card-chart" data-toggle="modal" data-target="#cumul_total_spend_card">
+    <div class="card-chart" data-toggle="modal" data-target="#cumul_total_spend">
         <h3>Montant de depenses cumul</h3>
           <!-- <-- <canvas id="myChart" width="400" height="400"></canvas> -->
           <%= column_chart @sum_amount_per_month, {format: "%b", download: true} %>
@@ -15,7 +17,7 @@
   </div>
 <%end %>
 
-<div class="modal fade" id="cumul_total_spend_card" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="cumul_total_spend" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -42,3 +44,5 @@
   </div>
 
 </main>
+
+
