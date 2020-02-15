@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root to: 'pages#dashboard'
+    devise_for :users
+    root to: 'pages#dashboard'
 
     get 'wellbeing', to: 'pages#wellbeing'
     get 'behaviour', to: 'pages#behaviour'
