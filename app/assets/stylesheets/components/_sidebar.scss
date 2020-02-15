@@ -337,13 +337,22 @@
   position: absolute;
   top: 0;
   left: 0;
-  border: 2px solid #980303;
+  border: 2px solid #f9fbfd;
   opacity: 0;
   border-radius: 50%;
   width: 100%;
   height: 100%;
   animation: sonar 1.5s infinite;
 }
+
+.sidebar-wrapper.toggled .notification {
+  display: none;
+
+}
+
+
+
+
 
 /*--------------------------page-content-----------------------------*/
 
@@ -464,9 +473,9 @@
 }
 
 .chiller-theme .sidebar-footer {
-    background: #3a3f48;
-    box-shadow: 0px -1px 5px #282c33;
-    border-top: 1px solid #464a52;
+    background: #0f355f;
+    margin: 0 20px;
+    border-top: 1px solid #e8edf1;
 }
 
 .chiller-theme .sidebar-footer>a:first-child {

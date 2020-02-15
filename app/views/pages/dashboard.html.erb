@@ -86,7 +86,7 @@
         <div class="card-chart" data-toggle="modal" data-target="#Type_spendings_card">
           <h6>Catégorie de dépense</h6>
           <!-- <canvas id="myChartPie" width="300" height="300" data-keys="<%= @types.keys.join(',') %>"></canvas> -->
-          <%= pie_chart @types, { colors:["#fea", "#9be", "#aad", "#fb2"], download: true } %>
+          <%= pie_chart @types, { download: true, donut: true} %>
         </div>
       </div>
     </div>
