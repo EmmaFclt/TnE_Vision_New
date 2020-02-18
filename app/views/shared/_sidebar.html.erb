@@ -15,8 +15,9 @@
           alt="User picture">
         </div>
         <div class="user-info">
-          <span class="user-name">Christian
-            <strong>Preda</strong>
+          <span class="user-name">
+            <%= current_user.first_name %>
+            <strong><%= current_user.last_name %></strong>
           </span>
           <span class="user-role">Administrateur</span>
           <span class="user-status">
