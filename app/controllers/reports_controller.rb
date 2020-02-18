@@ -54,6 +54,10 @@ class ReportsController < ApplicationController
     if @report.save
       set_transactions(@report)
       redirect_to root_path
+      if @transactions_count_week > 5000
+      @budget_alert = (@sum_amount_per_month-5000)/@sum_amount_per_month
+      flash.now[:notice] = "Vous avez depasé votre budget de #{@budget_alert}"
+      end
     else
       render :new
     end
