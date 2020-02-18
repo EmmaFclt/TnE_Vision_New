@@ -72,7 +72,7 @@ class PagesController < ApplicationController
   end
 
   def profil
-
+    @resource ||= current_user
   end
 
   def addfavorite
