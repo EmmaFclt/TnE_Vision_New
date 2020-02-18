@@ -134,8 +134,13 @@
       <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
          <h1 class="text-center">Alertes</h1>
-         <p>Ce mois vous avez depensé 30% de plus que le mois dernier </p>
-         <p>Vous avez diminué vos depenses sur le moyen de transport....Bravo! </p>
+         <% if (controller.controller_name == 'pages' &&
+                   controller.action_name == 'budget') %>
+          <div class='alert-test'><%= budget_alert(@total)%></div> <div class='link_alert'><%= link_to 'Budget', budget_path %></div>
+         <% end %>
+
+         <!-- <p>Ce mois vous avez depensé {de plus que le mois dernier</p>
+         Vous avez diminué vos depenses sur le moyen de transport....Bravo! </p> -->
          <h3 class="text-center">Recommandations</h3>
          <p> Favoriser le train à l'avion</p>
 

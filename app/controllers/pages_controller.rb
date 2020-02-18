@@ -64,8 +64,11 @@ class PagesController < ApplicationController
     @transactions = @company.transactions
     amount_per_month = @transactions.group_by { |t| t.start_date.month }.transform_values { |v| v.pluck(:amount) }.transform_values(&:sum).sort_by {|k, v| k}
     @sum_amount_per_month = amount_per_month.each_with_index { |a, i| a[1] = amount_per_month[i-1][1] + a[1] if i > 0 }.to_h.transform_keys(&:to_s).transform_keys{|k| ref[k]}
+    @total = @sum_amount_per_month.values.sum
 
   end
+
+
 
   def rse
 
@@ -127,6 +130,8 @@ class PagesController < ApplicationController
 
     @transactions_count_week = @transactions.group_by_day_of_week(:start_date, format: "%a").count
 
+
+
     ref = { '1' => 'January', '2' => 'February', '3' => 'March', '4' => 'April', '5' => 'May', '6' => 'June', '7'=> 'July', '8' => 'August', '9' => 'September', '10' => 'October', '11' => 'November', '12' => 'December' }
     @company = current_user.company
     @transactions = @company.transactions
@@ -135,4 +140,6 @@ class PagesController < ApplicationController
 
 
   end
+
+
 end
