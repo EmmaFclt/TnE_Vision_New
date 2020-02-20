@@ -3,10 +3,12 @@ require 'csv'
 class ReportsController < ApplicationController
 
   def new
+    @company = current_user.company
     @report = Report.new
   end
 
   def import
+    @company = current_user.company
     filepath = params[:file].path
     csv_options = { col_sep: ';', quote_char: '"', headers: :first_row }
 
@@ -45,6 +47,7 @@ class ReportsController < ApplicationController
   end
 
   def create
+    @company = current_user.company
     @report = Report.new(report_params)
 
     @report.user = current_user
@@ -64,10 +67,12 @@ class ReportsController < ApplicationController
   end
 
   def index
+    @company = current_user.company
     #put filters for each KPI and/or add option search
   end
 
   def destroy
+    @company = current_user.company
     @report = Report.find(params[:id])
     @report.destroy
   end
