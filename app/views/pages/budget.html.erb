@@ -10,7 +10,8 @@
     <div class="card-chart" data-toggle="modal" data-target="#cumul_total_spend_card">
         <h3>Montant de depenses cumul</h3>
           <!-- <-- <canvas id="myChart" width="400" height="400"></canvas> -->
-          <%= column_chart @sum_amount_per_month, {format: "%b", download: true} %>
+          <%# raise %>
+          <%= column_chart @company.amount_per_month, {format: "%b", download: true} %>
     </div>
   </div>
 <%end %>
