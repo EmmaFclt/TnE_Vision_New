@@ -2,26 +2,47 @@
 
 <%= simple_form_for(@resource, url: registration_path(@resource), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
+  <div class="card-chart">
 
-  <div class="form-inputs">
-    <%= f.input :first_name, required: true, autofocus: true %>
-    <%= f.input :last_name, required: true, autofocus: true %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-  </div>
+    <div class="form-group">
+      <%= f.input :first_name, required: true, autofocus: true, class: "form-control" %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+      <%= f.input :last_name, required: true, autofocus: true, class: "form-control" %>
+      <%= f.input :avatar, as: :file, required: true, autofocus: true, class: "form-control" %>
+      <%#= f.input :password_confirmation,
+                  required: false,
+                  input_html: { autocomplete: "new-password" }, class: "form-control" %>
+      <%= f.input :current_password,
+                  hint: "we need your current password to confirm your changes",
+                  required: true,
+                  input_html: { autocomplete: "current-password" }, class: "form-control" %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Update", class: "btn-primary" %>
+    </div>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<%#= link_to "Back", :back %>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(@resource), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<!-- <form>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Nom</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlFile1">Télechargez votre photo</label>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+  </div>
+ <div class="form-group">
+    <label for="exampleFormControlInput1">Poste</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" >
+  </div>
+  <div class="mb-4">
+    <%#= submit_tag( "Save" , class: "btn-primary" ) %>
+
+  </div>
+  </div>
+</form> -->

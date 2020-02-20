@@ -16,7 +16,7 @@
       <div class="col-xs-12 col-sm-4">
         <div class="card-chart" data-toggle="modal" data-target="#Nb_reservation_per_day_card">
           <h6>Nombre de réservation par jour</h6>
-          <%= column_chart @transactions_count_week, download: true %>
+          <%= column_chart @transactions_count_week, {colors:["#9be"], download: true} %>
         </div>
       </div>
     <% end %>
@@ -141,78 +141,117 @@
 
   <div class="modal fade" id="Type_spendings_card" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
+      <div class="modal-content" style="width: 150%">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Catégorie de dépense</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <%= link_to addfavorite_path(params: { graph: 'type-spendings' }) do %>
-              <% if current_user.favorites.include?('type-spendings') %>
-                <i class="fas fa-heart"></i>
-              <% else %>
-                <i class="far fa-heart"></i>
-              <% end %>
-          <% end %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <div class="row">
+            <div class="col-8">
+              <%= pie_chart @types, { download: true, donut: true} %>
+            </div>
+            <div class="col-4">
+              <h3>Description</h3>
+              <br>
+              <p > Répartition des dépenses globales par typologie de prestations (en valeur ou en %) </p>
+              <div class="icons-right">
+                <div>
+                  <%= link_to addfavorite_path(params: { graph: 'type-spendings' }) do %>
+                  <% if current_user.favorites.include?('type-spendings') %>
+                      <i class="fas fa-heart"></i>
+                  <% else %>
+                      <i class="far fa-heart"></i>
+                  <% end %>
+                <% end %>
+              </div>
+              <div>
+              <i class="fas fa-at"> </i>
+            </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="modal fade" id="Travel_destination_card" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <%= link_to addfavorite_path(params: { graph: 'travel-destination' }) do %>
-            <% if current_user.favorites.include?('travel-destination') %>
-                <i class="fas fa-heart"></i>
-              <% else %>
-                <i class="far fa-heart"></i>
-              <% end %>
-          <% end %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+<div class="modal fade" id="Travel_destination_card" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="max-width: unset; width: 75%; height: 500px;">
+    <div class="modal-content" style="width: 100% !important; height: 100%;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Destination de voyages</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-8">
+            <%= geo_chart @company.transactions.group(:countries).count, download: true %>
+          </div>
+          <div class="col-4">
+            <h3>Description</h3>
+            <br>
+            <p > Top 5/10/15/20 des routes pour lesquelles le volume de dépenses est le plus élevé </p>
+            <div class="icons-right">
+              <div>
+                <%= link_to addfavorite_path(params: { graph: 'travel-destination' }) do %>
+                  <% if current_user.favorites.include?('travel-destination') %>
+                    <i class="fas fa-heart"></i>
+                  <% else %>
+                    <i class="far fa-heart"></i>
+                  <% end %>
+                <% end %>
+              </div>
+              <div>
+                <i class="fas fa-at"> </i>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
   <div class="modal fade" id="Top_cities_card" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
+      <div class="modal-content" style="width: 150%">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Top villes</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <%= link_to addfavorite_path(params: { graph: 'top-cities' }) do %>
-              <% if current_user.favorites.include?('top-cities') %>
-                <i class="fas fa-heart"></i>
-              <% else %>
-                <i class="far fa-heart"></i>
-              <% end %>
-          <% end %>
+          <div class="row">
+            <div class="col-8">
+              <%=column_chart @cities, download: true %>
+            </div>
+            <div class="col-4">
+              <h3>Description</h3>
+              <br>
+              <p >Top 5/10/15/20 des villes ou régions pour lesquelles le volume de dépenses est le plus élevé.  </p>
+              <div class="icons-right">
+                <div>
+                    <%= link_to addfavorite_path(params: { graph: 'top-cities' }) do %>
+                      <% if current_user.favorites.include?('top-cities') %>
+                         <i class="fas fa-heart"></i>
+                      <% else %>
+                         <i class="far fa-heart"></i>
+                      <% end %>
+                      <% end %>
+                </div>
+                <div>
+                  <i class="fas fa-at"> </i>
+                </div>
+              </div>
+           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+       </div>
       </div>
     </div>
   </div>
