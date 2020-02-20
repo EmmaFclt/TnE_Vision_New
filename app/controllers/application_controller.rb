@@ -1,3 +1,11 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+  def configure_permitted_parameters    # Permit the `subscribe_newsletter` parameter along with the other
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :avatar])
+  end
 end

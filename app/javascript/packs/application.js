@@ -36,10 +36,15 @@ slideSidebar();
 // compliancyFilter();
 // serviceFilter();
 
-if (document.querySelector(".alert-test").innerHTML.length > 0) {
-  document.querySelector(".fa-bell").classList.add('text-danger');
-};
 
-if (document.querySelector(".alert-test").innerHTML.length === 0) {
-  document.querySelector(".link_alert").innerHTML='';
+if (document.querySelector(".alert-test")) {
+
+  if (document.querySelector(".alert-test").innerHTML.length > 0) {
+    document.querySelector(".fa-bell").classList.add('text-danger');
+  };
+
+  if (document.querySelector(".alert-test").innerHTML.length === 0) {
+    document.querySelector(".link_alert").innerHTML='';
+  };
+
 };
