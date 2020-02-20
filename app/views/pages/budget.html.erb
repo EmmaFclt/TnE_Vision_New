@@ -16,6 +16,24 @@
   </div>
 <%end %>
 
+<div class="w-50 p-3 bg-white mt-3 ml-auto mr-auto" style="box-shadow:4px 4px 10px rgba(0, 0, 0, 0.1);">
+
+  <%= simple_form_for(@company) do |f| %>
+  <div class="p-3">
+    <input class="form-control-range is-valid numeric range optional custom-range" type="range" step="100" min="0" max="100000" value="<%= @company.budget %>" name="company[budget]" id="company_budget" oninput="amount.value=company_budget.value">
+  </div>
+  <div class="d-flex justify-content-center">
+  <div class="px-3 py-2 border border-dark rounded d-flex flex-wrap text-center" style="width: fit-content;">
+    <div class="w-100" style="font-size: 12px;">Budget</div>
+    <output class="w-100" id="amount" name="amount" for="company_budget"><%= @company.budget %>€</output>
+  </div>
+  <div class="ml-5">
+    <%= f.submit "Update Budget", class: "btn-primary p-3 rounded"  %>
+  </div>
+</div>
+  <% end %>
+</div>
+
 <div class="modal fade" id="cumul_total_spend_card" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content" style="width: 150%">
@@ -43,3 +61,10 @@
   </div>
 
 </main>
+
+
+<script>
+  function updateTextInput(val) {
+    document.getElementbyId('textInput').value=val;
+  }
+</script>

@@ -136,7 +136,7 @@
          <h1 class="text-center">Alertes</h1>
          <%# if (controller.controller_name == 'pages' &&
                    controller.action_name == 'budget') %>
-          <div class='alert-test'><%= budget_alert(@company.total)%></div> <div class='link_alert'><%= link_to 'Budget', budget_path %></div>
+          <div class='alert-test'><%= budget_alert(@company.total, @company.budget)%></div> <div class='link_alert'><%= link_to 'Budget', budget_path %></div>
          <%# end %>
 
          <!-- <p>Ce mois vous avez depensé {de plus que le mois dernier</p>
