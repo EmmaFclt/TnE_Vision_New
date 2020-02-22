@@ -16,30 +16,68 @@
   </div>
 <%end %>
 
+<div class="w-50 p-3 bg-white mt-3 ml-auto mr-auto" style="box-shadow:4px 4px 10px rgba(0, 0, 0, 0.1);">
+
+  <%= simple_form_for(@company) do |f| %>
+  <div class="p-3">
+    <input class="form-control-range is-valid numeric range optional custom-range" type="range" step="100" min="0" max="100000" value="<%= @company.budget %>" name="company[budget]" id="company_budget" oninput="amount.value=company_budget.value">
+  </div>
+  <div class="d-flex justify-content-center">
+  <div class="px-3 py-2 border border-dark rounded d-flex flex-wrap text-center" style="width: fit-content;">
+    <div class="w-100" style="font-size: 12px;">Budget</div>
+    <output class="w-100" id="amount" name="amount" for="company_budget"><%= @company.budget %>€</output>
+  </div>
+  <div class="ml-5">
+    <%= f.submit "Update Budget", class: "btn-primary p-3 rounded", id: "update-budget"  %>
+  </div>
+</div>
+  <% end %>
+</div>
+
 <div class="modal fade" id="cumul_total_spend_card" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content" style="width: 150%">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Montant de depenses cumul</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <%= link_to addfavorite_path(params: { graph: 'cumul_total_spend' }) do %>
-              <% if current_user.favorites.include?('cumul_total_spend') %>
-                <i class="fas fa-heart"></i>
-              <% else %>
-                <i class="far fa-heart"></i>
-              <% end %>
-          <% end %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <div class="row">
+            <div class="col-8">
+              <%= column_chart @sum_amount_per_month, {format: "%b", download: true} %>
+            </div>
+            <div class="col-4">
+              <h3>Description</h3>
+              <br>
+              <p >Budget consommé cumulé VS restant.  </p>
+              <div class="icons-right">
+                <div>
+                  <%= link_to addfavorite_path(params: { graph: 'cumul_total_spend' }) do %>
+                   <% if current_user.favorites.include?('cumul_total_spend') %>
+                      <i class="fas fa-heart"></i>
+                    <% else %>
+                      <i class="far fa-heart"></i>
+                  <% end %>
+                <% end %>
+            </div>
+            <div>
+              <i class="fas fa-at"> </i>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+</div>
 
 </main>
+
+
+<script>
+  function updateTextInput(val) {
+    document.getElementbyId('textInput').value=val;
+  }
+</script>
