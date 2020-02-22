@@ -1,0 +1,38 @@
+<div class="modal fade" id="Nb_reservation_per_day_card" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="width: 150%">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Nombre de réservation par jour</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-8">
+              <%= column_chart @transactions_count_week, download: true %>
+            </div>
+            <div class="col-4">
+              <h3>Description</h3>
+              <br>
+              <p > Réservation de categorie par jour </p>
+              <div class="icons-right">
+                <div>
+                  <%= link_to addfavorite_path(params: { graph: 'nb-reservation-per-day' }) do %>
+                    <% if current_user.favorites.include?('nb-reservation-per-day') %>
+                      <i class="fas fa-heart"></i>
+                    <% else %>
+                      <i class="far fa-heart"></i>
+                    <% end %>
+                <% end %>
+             </div>
+             <div>
+              <i class="fas fa-at"> </i>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
