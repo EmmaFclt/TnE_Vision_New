@@ -20,7 +20,7 @@ class Company < ApplicationRecord
     transactions = self.transactions
     amount_per_month = transactions.group_by { |t| t.start_date.month }.transform_values { |v| v.pluck(:amount) }.transform_values(&:sum).sort_by {|k, v| k}
     sum_amount_per_month = amount_per_month.each_with_index { |a, i| a[1] = amount_per_month[i-1][1] + a[1] if i > 0 }.to_h.transform_keys(&:to_s).transform_keys{|k| ref[k]}
-    return sum_amount_per_month.values.sum
+    return sum_amount_per_month.values.last
   end
 
   def amount_per_month
@@ -31,3 +31,5 @@ class Company < ApplicationRecord
     return sum_amount_per_month
   end
 end
+
+amount_per_month = Company.last.transactions.group_by { |t| t.start_date.month }.transform_values { |v| v.pluck(:amount) }.transform_values(&:sum).sort_by {|k, v| k}
