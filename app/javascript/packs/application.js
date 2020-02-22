@@ -41,6 +41,7 @@ if (document.querySelector(".alert-test")) {
 
   if (document.querySelector(".alert-test").innerHTML.length > 0) {
     document.querySelector(".fa-bell").classList.add('text-danger');
+    if (document.getElementById("update-budget")) document.querySelector("#pages-budget .fa-bell").click();
   };
 
   if (document.querySelector(".alert-test").innerHTML.length === 0) {

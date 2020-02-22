@@ -12,7 +12,7 @@
     <%= javascript_pack_tag 'chartkick' %>
         <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
-  <body>
+  <body id="<%= controller.controller_name %>-<%= controller.action_name %>">
     <%= render 'shared/flashes' %>
     <%= render "shared/sidebar" %>
     <%= yield %>
