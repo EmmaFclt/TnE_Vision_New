@@ -52,3 +52,11 @@ if (document.querySelector(".alert-test")) {
   };
 
 };
+
+
+
+// if (document.querySelector("#pages-budget")) {
+//   const amount = document.querySelector("#amount").innerHTML;
+//   window.getComputedStyle(document.querySelector('#chart-1'), ':before').setProperty('top', "30px");
+
+// }

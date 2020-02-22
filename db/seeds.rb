@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Transaction.destroy_all
 Report.destroy_all
-Company.destroy_all if Rails.env.development?
-User.destroy_all if Rails.env.development?
+Company.destroy_all
+User.destroy_all
 
 p 'destroying previous data'
 
