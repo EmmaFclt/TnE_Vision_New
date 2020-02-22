@@ -134,9 +134,13 @@
   <div class="modal fade" id="Enhancements_card" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog sidebar-modal" role="document">
     <div class="modal-content modal-notification">
-      <div class="modal-body">
+      <div class="modal-header">
+        <h5 class="modal-title align-text" id="exampleModalLabel">Alertes</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-         <h1 class="text-center">Alertes</h1>
+        </div>
+      <div class="modal-body">
+
+
          <%# if (controller.controller_name == 'pages' &&
                    controller.action_name == 'budget') %>
           <div class='alert-test'><%= budget_alert(current_user.company&.total, current_user.company&.budget)%></div> <div class='link_alert'><%= link_to 'Budget', budget_path %></div>
@@ -144,8 +148,7 @@
 
          <!-- <p>Ce mois vous avez depensé {de plus que le mois dernier</p>
          Vous avez diminué vos depenses sur le moyen de transport....Bravo! </p> -->
-         <h3 class="text-center">Recommandations</h3>
-         <p> Favoriser le train à l'avion</p>
+
 
       </div>
     </div>
