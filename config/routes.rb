@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get 'profil', to: 'pages#profil'
     get 'favorites', to: 'pages#favorites'
     get 'addfavorite', to: 'pages#addfavorite'
+    post 'sendmail', to: 'pages#sendmail'
 
     resources :companies, only: %w(update)
 

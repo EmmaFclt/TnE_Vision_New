@@ -5,9 +5,14 @@
     <style>
       /* Email styles need to be inline */
     </style>
+    <%#= javascript_pack_tag :application %>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/chartkick/2.3.0/chartkick.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chartkick@3.2.0/dist/chartkick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   </head>
 
   <body>
     <%= yield %>
+
   </body>
 </html>
