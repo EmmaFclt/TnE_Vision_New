@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-
   def dashboard
     @company = current_user.company
     @transactions = @company.transactions
@@ -38,14 +37,10 @@ class PagesController < ApplicationController
     @types = @transactions.group_by { |t| t.transaction_type }
                           .transform_values { |v| v.count }
 
-
-
     @cities = @transactions.group_by{ |t| t.cities }
                           .transform_values{|v| v.count }.sort_by{ |k, v| -v }[0..4].to_h
 
     @transactions_count_week = @transactions.group_by_day_of_week(:start_date, format: "%a").count
-
-
   end
 
   def wellbeing
@@ -66,8 +61,6 @@ class PagesController < ApplicationController
     # @sum_amount_per_month = amount_per_month.each_with_index { |a, i| a[1] = amount_per_month[i-1][1] + a[1] if i > 0 }.to_h.transform_keys(&:to_s).transform_keys{|k| ref[k]}
     # @total = @sum_amount_per_month.values.sum
   end
-
-
 
   def rse
     @company = current_user.company
@@ -123,23 +116,19 @@ class PagesController < ApplicationController
     @types = @transactions.group_by { |t| t.transaction_type }
                           .transform_values { |v| v.count }
 
-
-
     @cities = @transactions.group_by{ |t| t.cities }
                           .transform_values{|v| v.count }.sort_by{ |k, v| -v }[0..4].to_h
 
     @transactions_count_week = @transactions.group_by_day_of_week(:start_date, format: "%a").count
-
-
 
     ref = { '1' => 'January', '2' => 'February', '3' => 'March', '4' => 'April', '5' => 'May', '6' => 'June', '7'=> 'July', '8' => 'August', '9' => 'September', '10' => 'October', '11' => 'November', '12' => 'December' }
     @company = current_user.company
     @transactions = @company.transactions
     amount_per_month = @transactions.group_by { |t| t.start_date.month }.transform_values { |v| v.pluck(:amount) }.transform_values(&:sum).sort_by {|k, v| k}
     @sum_amount_per_month = amount_per_month.each_with_index { |a, i| a[1] = amount_per_month[i-1][1] + a[1] if i > 0 }.to_h.transform_keys(&:to_s).transform_keys{|k| ref[k]}
-
-
   end
 
-
+  def sendmail
+    GraphMailer.with(company: current_user.company).extract.deliver_now
+  end
 end
