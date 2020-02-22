@@ -11,7 +11,7 @@
         <h3>Montant de depenses cumul</h3>
           <!-- <-- <canvas id="myChart" width="400" height="400"></canvas> -->
           <%# raise %>
-          <%= column_chart @company.amount_per_month, {format: "%b", download: true} %>
+          <%= column_chart @company.amount_per_month, {format: "%b", download: true, colors: ["#9be"]} %>
     </div>
   </div>
 <%end %>
