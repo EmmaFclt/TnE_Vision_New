@@ -10,7 +10,7 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-8">
-              <%= column_chart @sum_amount_per_month, {format: "%b", download: true} %>
+              <%= column_chart @company.amount_per_month, {format: "%b", download: true, colors: ["#9be"]} %>
             </div>
             <div class="col-4">
               <h3>Description</h3>

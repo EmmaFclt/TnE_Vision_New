@@ -7,6 +7,6 @@ module ApplicationHelper
     overdue = (sum_amount_per_month - budget) / sum_amount_per_month.to_f * 100
     puts sum_amount_per_month
     puts overdue
-    flash.now[:notice] = "-Vous avez depassé votre budget de #{overdue.to_i}%"
+    flash.now[:notice] = "Vous avez depassé votre budget de #{overdue.to_i}%"
   end
 end
