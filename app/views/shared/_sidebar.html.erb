@@ -133,20 +133,27 @@
   <!-- MODAL SYSTEM -->
   <div class="modal fade" id="Enhancements_card" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog sidebar-modal" role="document">
+
     <div class="modal-content modal-notification">
+
+<div class="text-center">
+      <div class="modal-header d-block position-relative">
+
+        <h5 class="modal-title text-center" id="exampleModalLabel">Alertes</h5>
+        <button type="button" class="close position-absolute" style="top: 10px; right:10px;" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
       <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-         <h1 class="text-center">Alertes</h1>
+
+        <%= image_tag("warning.png", :alt => "#", :class => "warning") %>
+
+
          <%# if (controller.controller_name == 'pages' &&
                    controller.action_name == 'budget') %>
           <div class='alert-test'><%= budget_alert(current_user.company&.total, current_user.company&.budget)%></div> <div class='link_alert'><%= link_to 'Budget', budget_path %></div>
          <%# end %>
-
+</div>
          <!-- <p>Ce mois vous avez depensé {de plus que le mois dernier</p>
          Vous avez diminué vos depenses sur le moyen de transport....Bravo! </p> -->
-         <h3 class="text-center">Recommandations</h3>
-         <p> Favoriser le train à l'avion</p>
-
       </div>
     </div>
   </div>
