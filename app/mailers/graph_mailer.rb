@@ -5,13 +5,16 @@ class GraphMailer < ApplicationMailer
   #
   #   en.graph_mailer.extract.subject
   #
-  # add_template_helper(bar_chart)
+
   def extract
     @company = params[:company]
-
+    @graph = params[:graph]
+    @titre = params[:titre]
+    @description = params[:description]
+    @commentaire = params[:commentaire]
     mail(
-      to: "emma@tnevision.com",
-      subject: "test"
+      to: params[:email],
+      subject: "Un collègue souhaite vous partager une information"
       )
   end
 end

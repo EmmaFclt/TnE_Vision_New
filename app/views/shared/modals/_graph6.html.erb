@@ -1,40 +1,60 @@
 <div class="modal fade" id="cumul_total_spend_card" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content" style="width: 150%">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Montant de depenses cumul</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-8">
-              <%= column_chart @sum_amount_per_month, {format: "%b", download: true} %>
-            </div>
-            <div class="col-4">
-              <h3>Description</h3>
-              <br>
-              <p >Budget consommé cumulé VS restant.  </p>
-              <div class="icons-right">
-                <div>
-                  <%= link_to addfavorite_path(params: { graph: 'cumul_total_spend' }) do %>
-                   <% if current_user.favorites.include?('cumul_total_spend') %>
-                      <i class="fas fa-heart"></i>
-                    <% else %>
-                      <i class="far fa-heart"></i>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content p-2" style="width: 150%">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Suivi du budget des dépenses cumulées</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-8">
+            <%= column_chart @sum_amount_per_month, {format: "%b", download: true} %>
+          </div>
+          <div class="col-4">
+            <h3>Description</h3>
+            <br>
+            <p>Montant total des dépenses cumulées mois par mois. Vs Budget alloué.</p>
+            <div class="icons-right">
+              <div>
+                <%= link_to addfavorite_path(params: { graph: 'cumul_total_spend' }) do %>
+                 <% if current_user.favorites.include?('cumul_total_spend') %>
+                    <i class="fas fa-heart"></i>
+                  <% else %>
+                    <i class="far fa-heart"></i>
                   <% end %>
                 <% end %>
-            </div>
+              </div>
             <div>
-              <i class="fas fa-at"> </i>
-            </div>
+            <p class="text-primary" data-toggle="modal" data-target="#Graph6_mail">@</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-</div>
+<!--MailerModal -->
+  <div class="modal fade" id="Graph6_mail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="width: 150%">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Envoi Mail</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h6><b>Suivi du budget des dépenses cumulées : </b></h6>
+          <p>Montant total des dépenses cumulées mois par mois. Vs Budget alloué.</p>
+            <%= column_chart @sum_amount_per_month, {format: "%b", download: true} %>
+          <%= simple_form_for :mail, url: sendmail_path(params: {graph: 'graph6', titre: 'Suivi du budget des dépenses cumulées', description: 'Montant total des dépenses cumulées mois par mois. Vs Budget alloué.'}), method: :post do |f| %>
+            <%= f.input :email, label: 'Adresse mail du destinataire:' %>
+            <%= f.input :body, as: :text, label: 'Votre commentaire ici:' %>
+            <%= f.submit "Envoi", class: "btn btn-primary justify-content-space-betwenn" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-</main>
