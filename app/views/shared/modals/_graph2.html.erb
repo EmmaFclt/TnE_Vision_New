@@ -1,8 +1,8 @@
 <div class="modal fade" id="Nb_reservation_per_day_card" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content" style="width: 150%">
+      <div class="modal-content p-2" style="width: 150%">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Nombre de réservation par jour</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Nombre de réservations par jour</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -15,7 +15,7 @@
             <div class="col-4">
               <h3>Description</h3>
               <br>
-              <p > Réservation de categorie par jour </p>
+              <p>Total des réservations faites en fonction des jours de la semaine.</p>
               <div class="icons-right">
                 <div>
                   <%= link_to addfavorite_path(params: { graph: 'nb-reservation-per-day' }) do %>
@@ -27,7 +27,7 @@
                 <% end %>
              </div>
              <div>
-              <i class="fas fa-at"> </i>
+              <p class="text-primary" data-toggle="modal" data-target="#Graph2_mail">@</p>
             </div>
             </div>
           </div>
@@ -36,3 +36,26 @@
     </div>
   </div>
 </div>
+<!--MailerModal -->
+  <div class="modal fade" id="Graph2_mail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="width: 150%">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Envoi Mail</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h6><b>Nombre de réservations par jour : </b></h6>
+          <p>Total des réservations faites en fonction des jours de la semaine.</p>
+            <%= column_chart @transactions_count_week, download: true %>
+          <%= simple_form_for :mail, url: sendmail_path(params: {graph: 'graph2', titre: 'Nombre de réservations par jour', description: 'Total des réservations faites en fonction des jours de la semaine.'} ), method: :post do |f| %>
+            <%= f.input :email, label: 'Adresse mail du destinataire:' %>
+            <%= f.input :body, as: :text, label: 'Votre commentaire ici:' %>
+            <%= f.submit "Envoi", class: "btn btn-primary justify-content-space-betwenn" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>

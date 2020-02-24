@@ -1,8 +1,8 @@
 <div class="modal fade" id="Travel_destination_card" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document" style="max-width: unset; width: 75%; height: 500px;">
-    <div class="modal-content" style="width: 100% !important; height: 100%;">
+    <div class="modal-content p-2" style="width: 100% !important; height: 100%;">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Destination de voyages</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Destinations des déplacements</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -15,7 +15,7 @@
           <div class="col-4">
             <h3>Description</h3>
             <br>
-            <p > Top 5/10/15/20 des routes pour lesquelles le volume de dépenses est le plus élevé </p>
+            <p>Destinations pour lesquelles le volume de dépenses est le plus élevé</p>
             <div class="icons-right">
               <div>
                 <%= link_to addfavorite_path(params: { graph: 'travel-destination' }) do %>
@@ -27,7 +27,7 @@
                 <% end %>
               </div>
               <div>
-                <i class="fas fa-at"> </i>
+                <p class="text-primary" data-toggle="modal" data-target="#Graph4_mail">@</p>
               </div>
             </div>
           </div>
@@ -36,3 +36,26 @@
     </div>
   </div>
 </div>
+<!--MailerModal -->
+  <div class="modal fade" id="Graph4_mail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="width: 150%">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Envoi Mail</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h6><b>Destinations des déplacements : </b></h6>
+          <p>Destinations pour lesquelles le total des dépenses est le plus élevé</p>
+            <%= geo_chart @company.transactions.group(:countries).count, download: true %>
+          <%= simple_form_for :mail, url: sendmail_path(params: {graph: 'graph4', titre: 'Destinations des déplacements', description: 'Destinations pour lesquelles le total des dépenses est le plus élevé.'}), method: :post do |f| %>
+            <%= f.input :email, label: 'Adresse mail du destinataire:' %>
+            <%= f.input :body, as: :text, label: 'Votre commentaire ici:' %>
+            <%= f.submit "Envoi", class: "btn btn-primary justify-content-space-betwenn" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>

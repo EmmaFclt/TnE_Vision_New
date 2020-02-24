@@ -1,8 +1,8 @@
 <div class="modal fade" id="Type_spendings_card" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content" style="width: 150%">
+      <div class="modal-content p-2" style="width: 150%">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Catégorie de dépense</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Catégories de dépenses</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -15,7 +15,7 @@
             <div class="col-4">
               <h3>Description</h3>
               <br>
-              <p > Répartition des dépenses globales par typologie de prestations (en valeur ou en %) </p>
+              <p>Répartition des dépenses totales en valeur par typologie de prestations</p>
               <div class="icons-right">
                 <div>
                   <%= link_to addfavorite_path(params: { graph: 'type-spendings' }) do %>
@@ -27,8 +27,8 @@
                 <% end %>
               </div>
               <div>
-              <i class="fas fa-at"> </i>
-            </div>
+                <p class="text-primary" data-toggle="modal" data-target="#Graph3_mail">@</p>
+              </div>
             </div>
           </div>
         </div>
@@ -36,3 +36,26 @@
     </div>
   </div>
 </div>
+<!--MailerModal -->
+  <div class="modal fade" id="Graph3_mail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="width: 150%">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Envoi Mail</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h6><b>Catégories de dépenses : </b></h6>
+          <p>Répartition des dépenses totales en valeur par typologie de prestations</p>
+            <%= pie_chart @types, { download: true, donut: true} %>
+          <%= simple_form_for :mail, url: sendmail_path(params: {graph: 'graph3', titre: 'Catégories de dépenses', description: 'Répartition des dépenses totales en valeur par typologie de prestations.'}), method: :post do |f| %>
+            <%= f.input :email, label: 'Adresse mail du destinataire:' %>
+            <%= f.input :body, as: :text, label: 'Votre commentaire ici:' %>
+            <%= f.submit "Envoi", class: "btn btn-primary justify-content-space-betwenn" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>

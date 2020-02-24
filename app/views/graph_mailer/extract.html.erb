@@ -1,2 +1,16 @@
-<h1>test</h1>
-<%= bar_chart @company.top_5_travellers, {colors:["#dd0", "#dd0", "#aad", "#fb2"], download: true }%>
+<h1><%= @titre %></h1>
+<h2><%= @description %></h2>
+<h2><%=@commentaire %></h2>
+<% if @graph == 'graph1' %>
+    <%= bar_chart @company.top_5_travellers, {colors:["#dd0", "#dd0", "#aad", "#fb2"], download: true }%>
+  <% elsif @graph == 'graph2'%>
+    <%= column_chart @transactions_count_week, download: true %>
+  <% elsif @graph == 'graph3'%>
+    <%= pie_chart @types, { download: true, donut: true} %>
+  <% elsif @graph == 'graph4'%>
+    <%= geo_chart @company.transactions.group(:countries).count, download: true %>
+  <% elsif @graph == 'graph5'%>
+    <%=column_chart @cities, download: true %>
+  <% elsif @graph == 'graph6'%>
+    <%= column_chart @sum_amount_per_month, {format: "%b", download: true} %>
+<% end %>

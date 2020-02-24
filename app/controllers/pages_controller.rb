@@ -74,8 +74,7 @@ class PagesController < ApplicationController
   def addfavorite
     current_user.favorites.include?(params[:graph]) ? current_user.favorites.delete(params[:graph]) : current_user.favorites << params[:graph]
     current_user.save!
-    # raise
-    redirect_to :favorites
+    redirect_to :root
   end
 
   def favorites
@@ -129,6 +128,6 @@ class PagesController < ApplicationController
   end
 
   def sendmail
-    GraphMailer.with(company: current_user.company).extract.deliver_now
+    GraphMailer.with(company: current_user.company, graph: params[:graph], titre: params[:titre], description: params[:description], email: params[:mail][:email], commentaire: params[:mail][:commentaire]).extract.deliver_now
   end
 end
