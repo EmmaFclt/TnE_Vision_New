@@ -10,7 +10,7 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-8">
-              <%=column_chart @cities, download: true %>
+              <%=column_chart @cities, {colors:["#aad", "#dd0", "#aad", "#fb2"], download: {background: "#F9FBFD"} }%>
             </div>
             <div class="col-4">
               <h3>Description</h3>
@@ -49,7 +49,7 @@
         <div class="modal-body">
           <h6><b>Top 5 villes : </b></h6>
           <p>Top 5 des villes ou régions pour lesquelles le volume de dépenses est le plus élevé.</p>
-            <%=column_chart @cities, download: true %>
+            <%=column_chart @cities, {colors:["#aad", "#dd0", "#aad", "#fb2"], download: {background: "#F9FBFD"} }%>
           <%= simple_form_for :mail, url: sendmail_path(params: {graph: 'graph5', titre: 'Top 5 villes', description: 'Top 5 des villes ou régions pour lesquelles le volume de dépenses est le plus élevé.'}), method: :post do |f| %>
             <%= f.input :email, label: 'Adresse mail du destinataire:' %>
             <%= f.input :body, as: :text, label: 'Votre commentaire ici:' %>

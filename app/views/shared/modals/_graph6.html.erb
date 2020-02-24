@@ -10,7 +10,7 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-8">
-            <%= column_chart @sum_amount_per_month, {format: "%b", download: true} %>
+             <%= column_chart @company.amount_per_month, {format: "%b", download: true, colors: ["#9be"]}  %>
           </div>
           <div class="col-4">
             <h3>Description</h3>
@@ -47,7 +47,7 @@
         <div class="modal-body">
           <h6><b>Suivi du budget des dépenses cumulées : </b></h6>
           <p>Montant total des dépenses cumulées mois par mois. Vs Budget alloué.</p>
-            <%= column_chart @sum_amount_per_month, {format: "%b", download: true} %>
+             <%= column_chart @company.amount_per_month, {format: "%b", download: true, colors: ["#9be"]} %>
           <%= simple_form_for :mail, url: sendmail_path(params: {graph: 'graph6', titre: 'Suivi du budget des dépenses cumulées', description: 'Montant total des dépenses cumulées mois par mois. Vs Budget alloué.'}), method: :post do |f| %>
             <%= f.input :email, label: 'Adresse mail du destinataire:' %>
             <%= f.input :body, as: :text, label: 'Votre commentaire ici:' %>
