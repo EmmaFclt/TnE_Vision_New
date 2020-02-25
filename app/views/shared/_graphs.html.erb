@@ -29,7 +29,6 @@
         </div>
       </div>
     <% end %>
-
     </div>
 
     <div class="row">
@@ -48,8 +47,10 @@
             <h6 class="text-center">Top villes</h6>
             <%=column_chart @cities, {colors:["#aad", "#dd0", "#aad", "#fb2"], download: {background: "#F9FBFD"} }%>
           </div>
+          <%= bar_chart @company.top_5_travellers, {colors:["#dd0", "#dd0", "#aad", "#fb2"], download: {background: "#F9FBFD"} } %>
         </div>
-      <% end %>
+      </div>
+    <% end %>
 
     </div>
 
