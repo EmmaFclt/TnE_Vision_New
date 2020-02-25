@@ -5,7 +5,6 @@ class GraphMailer < ApplicationMailer
   #
   #   en.graph_mailer.extract.subject
   #
-
   def extract
     @company = params[:company]
     @graph = params[:graph]
@@ -14,7 +13,7 @@ class GraphMailer < ApplicationMailer
     @commentaire = params[:commentaire]
     mail(
       to: params[:email],
-      subject: "Un collègue souhaite vous partager une information"
+      subject: "💡 Un collègue souhaite vous partager une information"
       )
   end
 end
