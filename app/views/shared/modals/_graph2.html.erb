@@ -10,7 +10,7 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-8">
-              <%= column_chart @transactions_count_week, download: true %>
+              <%= column_chart @transactions_count_week, {colors:["#9be"], download: true} %>
             </div>
             <div class="col-4">
               <h3>Description</h3>
@@ -49,7 +49,7 @@
         <div class="modal-body">
           <h6><b>Nombre de réservations par jour : </b></h6>
           <p>Total des réservations faites en fonction des jours de la semaine.</p>
-            <%= column_chart @transactions_count_week, download: true %>
+            <%= column_chart @transactions_count_week, {colors:["#9be"], download: true} %>
           <%= simple_form_for :mail, url: sendmail_path(params: {graph: 'graph2', titre: 'Nombre de réservations par jour', description: 'Total des réservations faites en fonction des jours de la semaine.'} ), method: :post do |f| %>
             <%= f.input :email, label: 'Adresse mail du destinataire:' %>
             <%= f.input :body, as: :text, label: 'Votre commentaire ici:' %>
