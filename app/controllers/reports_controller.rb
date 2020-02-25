@@ -39,7 +39,8 @@ class ReportsController < ApplicationController
         service: row [13],
         start_date: row[3],
         end_date: row[4],
-        countries: row[14]
+        countries: row[14],
+        year: row[15].to_i
       )
 
     end

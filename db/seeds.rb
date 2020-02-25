@@ -13,8 +13,10 @@ User.destroy_all
 p 'destroying previous data'
 
 
-company=Company.create!(name:"Heineken", logo:"HK", address:"2 rue de Martinets", budget: 0)
+
+company=Company.create!(name:"Heineken", logo:"HK", address:"2 rue de Martinets", budget: 10000)
 User.create!(first_name:"Emma", last_name:"Foucault", password:"123456", email:"emma@heineken.fr", company:company)
+
 
 # report = Report.create(company: company, user: User.first, format: 'csv', submission_date: Date.today, source: 'Arval')
 
