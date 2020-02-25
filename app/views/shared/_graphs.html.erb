@@ -4,9 +4,9 @@
     <% if current_user.favorites.include?('top-travellers') || params[:action] == 'dashboard' %>
       <div class="col-xs-12 col-sm-4">
         <div class="card-chart" data-toggle="modal" data-target="#Top_travellers_card">
-          <div class="d-flex justify-content-between align-items-center">
-            <h6>Top 5 voyageurs</h6>
-          </div>
+          <!-- <div class="d-flex justify-content-between align-items-center"> -->
+            <h6 class="text-center">Top 5 voyageurs</h6>
+          <!-- </div> -->
           <%= bar_chart @company.top_5_travellers, {colors:["#dd0", "#dd0", "#aad", "#fb2"], download: {background: "#F9FBFD"} } %>
         </div>
       </div>
@@ -15,7 +15,7 @@
     <% if current_user.favorites.include?('nb-reservation-per-day') || params[:action] == 'dashboard' %>
       <div class="col-xs-12 col-sm-4">
         <div class="card-chart" data-toggle="modal" data-target="#Nb_reservation_per_day_card">
-          <h6>Nombre de réservations par jour</h6>
+          <h6 class="text-center">Nombre de réservations par jour</h6>
           <%= column_chart @transactions_count_week, {colors:["#9be"], download: true} %>
         </div>
       </div>
@@ -24,7 +24,7 @@
     <% if current_user.favorites.include?('type-spendings') || params[:action] == 'dashboard' %>
       <div class="col-xs-12 col-sm-4">
         <div class="card-chart" data-toggle="modal" data-target="#Type_spendings_card">
-          <h6>Catégories de dépenses</h6>
+          <h6 class="text-center">Catégories de dépenses</h6>
           <%= pie_chart @types, { download: {background: "#F9FBFD"}, donut: true} %>
         </div>
       </div>
@@ -36,7 +36,7 @@
       <% if current_user.favorites.include?('travel-destination') || params[:action] == 'dashboard' %>
         <div class="col-xs-12 col-sm-8">
           <div class="card-chart" data-toggle="modal" data-target="#Travel_destination_card">
-            <h6>Destinations des déplacements</h6>
+            <h6 class="text-center">Destinations des déplacements</h6>
             <%= geo_chart @company.transactions.group(:countries).count, download: {background: "#F9FBFD"} %>
           </div>
         </div>
@@ -45,7 +45,7 @@
       <% if current_user.favorites.include?('top-cities') || params[:action] == 'dashboard' %>
         <div class="col-xs-12 col-sm-4 d-flex align-items-end">
           <div class="card-chart" data-toggle="modal" data-target="#Top_cities_card">
-            <h6>Top villes</h6>
+            <h6 class="text-center">Top villes</h6>
             <%=column_chart @cities, {colors:["#aad", "#dd0", "#aad", "#fb2"], download: {background: "#F9FBFD"} }%>
           </div>
         </div>
