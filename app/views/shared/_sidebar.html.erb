@@ -1,4 +1,5 @@
 <% if current_user %>
+  <% if params[:action] != 'landing'  %>
   <div class="page-wrapper d-flex chiller-theme ">
   <nav id="sidebar" class="sidebar-wrapper toggled d-flex flex-column">
     <div class="sidebar-content flex-grow-1">
@@ -158,4 +159,5 @@
     </div>
   </div>
 </div>
+  <% end %>
 <% end %>
