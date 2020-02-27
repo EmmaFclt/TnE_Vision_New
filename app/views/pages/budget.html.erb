@@ -9,7 +9,7 @@
   <div class="col-xs-12 col-sm-12">
     <div class="card-chart" data-toggle="modal" data-target="#cumul_total_spend_card">
 
-        <h3 class="text-center">Montant des dépenses cumulées en 2020</h3>
+        <h3 class="text-center">Montant des dépenses cumulées <strong> en 2020</strong></h3>
 
           <!-- <-- <canvas id="myChart" width="400" height="400"></canvas> -->
           <%# raise %>
@@ -18,22 +18,11 @@
   </div>
 <%end %>
 <br>
-<% if current_user.favorites.include?('cumul_total_spend') || params[:action] == 'budget' %>
-  <div class="col-xs-12 col-sm-12">
-    <div class="card-chart" data-toggle="modal" data-target="#cumul_total_spend_card">
-        <h3 class="text-center">Montant des dépenses cumulées en 2019</h3>
-          <!-- <-- <canvas id="myChart" width="400" height="400"></canvas> -->
-          <%# raise %>
-          <%= column_chart @company.amount_per_month(2019), {format: "%b", download: true, colors: ["#9be"]} %>
-    </div>
-  </div>
-<%end %>
-
-<div class="w-50 p-3 bg-white mt-3 ml-auto mr-auto" style="box-shadow:4px 4px 10px rgba(0, 0, 0, 0.1);">
+<div class="w-50 p-3 bg-white ml-auto mr-auto" style="box-shadow:4px 4px 10px rgba(0, 0, 0, 0.1);">
 
   <%= simple_form_for(@company) do |f| %>
     <div class="p-3">
-      <input class="form-control-range is-valid numeric range optional custom-range" type="range" step="100" min="0" max="50000" value="<%= @company.budget %>" name="company[budget]" id="company_budget" oninput="amount.value=company_budget.value">
+      <input class="form-control-range is-valid numeric range optional custom-range" type="range" step="500" min="0" max="50000" value="<%= @company.budget %>" name="company[budget]" id="company_budget" oninput="amount.value=company_budget.value">
     </div>
     <div class="d-flex justify-content-center">
       <div class="px-3 py-2 border border-dark rounded d-flex flex-wrap text-center" style="width: fit-content;">
@@ -46,7 +35,19 @@
       </div>
     </div>
   <% end %>
-</div>
+  <br>
+    <% if current_user.favorites.include?('cumul_total_spend') || params[:action] == 'budget' %>
+      <div class="col-xs-12 col-sm-12">
+        <div class="card-chart" data-toggle="modal" data-target="#cumul_total_spend_card">
+            <h3 class="text-center">Montant des dépenses cumulées <strong> en 2019</strong></h3>
+              <!-- <-- <canvas id="myChart" width="400" height="400"></canvas> -->
+              <%# raise %>
+              <%= column_chart @company.amount_per_month(2019), {format: "%b", download: true, colors: ["#9be"]} %>
+        </div>
+      </div>
+    <%end %>
+    </div>
+
 <!-- MODAL -->
 <%= render 'shared/modals/graph6' %>
 <!-- -->

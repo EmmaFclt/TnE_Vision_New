@@ -29,7 +29,7 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="#">
-            <%= f.input :entity, :collection => @entities, wrapper_html: { class: 'form-group' }, :as => :check_boxes, :multiple => true, include_hidden: false %>
+            <%= f.input :entity, :collection => @entities, wrapper_html: { class: 'form-group' }, :as => :check_boxes, :multiple => true, include_hidden: false, :label => false%>
           </a>
         </div>
       </div>
