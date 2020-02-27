@@ -84,13 +84,13 @@
   display: none;
 }
 
-.sidebar-wrapper .sidebar-brand .fa-times:before {
+.sidebar-wrapper .sidebar-brand .fa-chevron-left:before {
   transition: all .5s ease;
 }
 
-.sidebar-wrapper.toggled .sidebar-brand .fa-times:before {
-  content: "\f054";
+.sidebar-wrapper.toggled .sidebar-brand .fa-chevron-left:before {
   transition: all .5s ease;
+  content: "\f054";
 }
 
 // .sidebar-wrapper .sidebar-brand #close-sidebar {
