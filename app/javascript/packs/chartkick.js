@@ -6,7 +6,6 @@ window.Chartkick = Chartkick
 Chartkick.addAdapter(Chart)
 Chartkick.options = {
   library: {
-    backgroundColor: "#000",
     animation: {
       easing: 'easeOutQuart',
       duration: 3000
