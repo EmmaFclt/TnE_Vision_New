@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
     devise_for :users
-    root to: 'pages#dashboard'
+    root to: 'pages#landing'
 
+    get 'dashboard', to: 'pages#dashboard'
     get 'wellbeing', to: 'pages#wellbeing'
     get 'behaviour', to: 'pages#behaviour'
     get 'budget', to: 'pages#budget'
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
     get 'favorites', to: 'pages#favorites'
     get 'addfavorite', to: 'pages#addfavorite'
     post 'sendmail', to: 'pages#sendmail'
+    get 'landing', to: 'pages#landing'
 
     resources :companies, only: %w(update)
 
