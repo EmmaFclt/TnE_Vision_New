@@ -49,15 +49,15 @@
           <li class="header-menu">
             <span>Applications</span>
           </li>
-          <li class="sidebar-dropdown">
+          <li class="sidebar-dropdown <%= 'active' if params[:action] == 'favorites' %>">
             <a href="/favorites">
               <i class="far fa-heart"></i>
               <span>KPIs Favoris</span>
             </a>
           </li>
 
-          <li class="sidebar-dropdown">
-            <a href="/">
+          <li class="sidebar-dropdown <%= 'active' if params[:action] == 'dashboard' %>">
+            <a href="/dashboard">
               <i class="fa fa-tachometer-alt"></i>
               <span>Dép. Globales</span>
             </a>
@@ -74,7 +74,7 @@
             <span>Comportement</span>
           </a>
         </li>
-        <li class="sidebar-dropdown">
+        <li class="sidebar-dropdown <%= 'active' if params[:action] == 'budget' %>">
           <a href="/budget">
             <i class="fa fa-chart-line"></i>
             <span>Budget</span>
