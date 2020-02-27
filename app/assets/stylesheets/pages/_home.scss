@@ -26,11 +26,20 @@ hr {
   background-color: $orange
 }
 .date {
-  width: 60px;
-  weight: auto;
+  width: auto;
 }
 
 .warning {
 
   height: 150px;
+}
+
+.filter_entity legend,
+.filter_service legend,
+.filter_start_date label {
+    display: none;
+}
+
+.new_report_image {
+  width: 400px;
 }
