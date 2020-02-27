@@ -5,6 +5,59 @@
   </div>
 
   <hr>
+<div class="d-flex my-4">
+    <%= simple_form_for :filter, url: root_path, method: :get do |f| %>
+
+      <div class="btn mx-2 dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Conformité
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">
+            <%= f.input :compliancy, as: :boolean %>
+          </a>
+        </div>
+      </div>
+
+      <div class="btn mx-2 dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Entité
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">
+            <%= f.input :entity, :collection => @entities, wrapper_html: { class: 'form-group' }, :as => :check_boxes, :multiple => true, include_hidden: false %>
+          </a>
+        </div>
+      </div>
+
+      <div class="btn mx-2 dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Service
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">
+            <%= f.input :service, :collection => @services, wrapper_html: { class: 'form-group' }, :as => :check_boxes, :multiple => true, include_hidden: false %>
+          </a>
+        </div>
+      </div>
+
+      <div class="btn mx-2 dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Date
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item date" href="#">
+            <%= f.input :start_date, as: :date%>
+          </a>
+        </div>
+      </div>
+
+      <div class="btn">
+        <%= f.submit 'Filtrer', :class => "btn btn-primary mx-2" %>
+      </div>
+    <% end %>
+  </div>
+
 <%= render 'shared/graphs' %>
 
 <% if current_user.favorites.include?('cumul_total_spend') || params[:action] == 'budget' %>
