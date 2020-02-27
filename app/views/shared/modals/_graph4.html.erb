@@ -50,6 +50,9 @@
           <h6><b>Destinations des déplacements : </b></h6>
           <p>Destinations pour lesquelles le total des dépenses est le plus élevé</p>
             <%= geo_chart @company.transactions.group(:countries).count, download: true %>
+            <br>
+            <br>
+
           <%= simple_form_for :mail, url: sendmail_path(params: {graph: 'graph4', titre: 'Destinations des déplacements', description: 'Destinations pour lesquelles le total des dépenses est le plus élevé.'}), method: :post do |f| %>
             <%= f.input :email, label: 'Adresse mail du destinataire:' %>
             <%= f.input :body, as: :text, label: 'Votre commentaire ici:' %>
