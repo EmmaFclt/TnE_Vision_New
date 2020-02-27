@@ -11,11 +11,11 @@
       </div>
       <div class="mb-4">
         <%= label_tag 'format' %>
-        <%= text_field_tag :format %>
+        <%= select_tag 'format', options_for_select([['Sélectionnez un format', 1], ['CSV', 2], ['PDF', 3], ['Excel', 4], ['Power Point', 5]])%>
       </div>
       <div class="mb-4">
         <%= label_tag 'source' %>
-        <%= text_field_tag :source %>
+        <%= select_tag 'source', options_for_select([['Sélectionnez une source', 1], ['Comptabilité', 2], ['Agence de voyages', 3], ['ERP', 4], ['Notes de frais', 5], ['Moyen de paiement', 6]])%>
       </div>
       <div class="mb-4">
         <%= submit_tag( "Importer" , class: "btn-primary" ) %>

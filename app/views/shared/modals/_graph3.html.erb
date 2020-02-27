@@ -15,7 +15,7 @@
             <div class="col-4">
               <h3>Description</h3>
               <br>
-              <p>Répartition des dépenses totales en valeur par typologie de prestations</p>
+              <p>Répartition des dépenses totales en valeur par typologie de prestations.</p>
               <div class="icons-right">
                 <div>
                   <%= link_to addfavorite_path(params: { graph: 'type-spendings' }) do %>
@@ -48,7 +48,7 @@
         </div>
         <div class="modal-body">
           <h6><b>Catégories de dépenses : </b></h6>
-          <p>Répartition des dépenses totales en valeur par typologie de prestations</p>
+          <p>Répartition des dépenses totales en valeur par typologie de prestations.</p>
             <%= pie_chart @types, { download: true, donut: true} %>
           <%= simple_form_for :mail, url: sendmail_path(params: {graph: 'graph3', titre: 'Catégories de dépenses', description: 'Répartition des dépenses totales en valeur par typologie de prestations.'}), method: :post do |f| %>
             <%= f.input :email, label: 'Adresse mail du destinataire:' %>
