@@ -1,20 +1,21 @@
-<h2>Modifier <%= @resource.first_name.to_s.humanize %></h2>
+<h2>Modifier le profil de <%= @resource.first_name.to_s.humanize %></h2>
 
 <%= simple_form_for(@resource, url: registration_path(@resource), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
   <div class="card-chart">
 
     <div class="form-group">
-      <%= f.input :first_name, required: true, autofocus: true, class: "form-control" %>
+      <%= f.input :first_name, required: true, autofocus: true, class: "form-control", label: "Prénom" %>
 
-      <%= f.input :last_name, required: true, autofocus: true, class: "form-control" %>
-      <%= f.input :avatar, as: :file, required: true, autofocus: true, class: "form-control" %>
+      <%= f.input :last_name, required: true, autofocus: true, class: "form-control", label: "Nom" %>
+      <%= f.input :avatar, as: :file, required: true, autofocus: true, class: "form-control", label: "Votre photo" %>
       <%#= f.input :password_confirmation,
                   required: false,
                   input_html: { autocomplete: "new-password" }, class: "form-control" %>
       <%= f.input :current_password,
-                  hint: "Nous avons besoin de votre mot de passe actuel pour confirmer vos modifications",
+                  hint: "Nous avons besoin de votre mot de passe actuel pour confirmer vos modifications.",
                   required: true,
+                  label: "Votre mot de passe",
                   input_html: { autocomplete: "current-password" }, class: "form-control" %>
     </div>
 
