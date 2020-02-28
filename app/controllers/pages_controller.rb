@@ -74,7 +74,7 @@ class PagesController < ApplicationController
   def addfavorite
     current_user.favorites.include?(params[:graph]) ? current_user.favorites.delete(params[:graph]) : current_user.favorites << params[:graph]
     current_user.save!
-    redirect_to :root
+    redirect_to :dashboard
   end
 
   def favorites

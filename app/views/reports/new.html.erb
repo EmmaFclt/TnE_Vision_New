@@ -1,29 +1,37 @@
-<main class="page-content flex-grow-1 p-5 d-block">
-  <div class="d-flex justify-content-between align-items-center">
+<main class="page-content p-5">
+  <div class="d-flex justify-content-between align-items-center" style="width: 100%">
       <h5>Chargement d'un nouveau fichier</h5>
       <%= image_tag("Logo-TNE-RVB-small.png", :alt => "#", :class => "logo") %>
   </div>
   <hr>
-    <div class="card-chart">
-      <div class="mb-4">
+  <br>
+  <div class="row around-xs">
+    <div class="col-xs-2 card-chart mb-4 mr-4">
+      <div class="box">
         <%= form_tag('/import',method: :post, multipart: true) do %>
         <%= file_field_tag :file %>
       </div>
-      <div class="mb-4">
+    </div>
+    <div class="col-xs-2 card-chart mb-4 mr-4">
+      <div class="box text-primary">
         <%= label_tag 'format' %>
         <%= select_tag 'format', options_for_select([['Sélectionnez un format', 1], ['CSV', 2], ['PDF', 3], ['Excel', 4], ['Power Point', 5]])%>
       </div>
-      <div class="mb-4">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 card-chart mb-4 mr-4">
+      <div class="box text-primary">
         <%= label_tag 'source' %>
         <%= select_tag 'source', options_for_select([['Sélectionnez une source', 1], ['Comptabilité', 2], ['Agence de voyages', 3], ['ERP', 4], ['Notes de frais', 5], ['Moyen de paiement', 6]])%>
       </div>
-      <div class="mb-4">
-        <%= submit_tag( "Importer" , class: "btn-primary" ) %>
+    </div>
+    <div class="col-xs-2">
+      <div class="box mt-3" style="box-shadow: 4px 4px 10px rgba(0,0,0,.1)">
+        <%= submit_tag( "Importer" , class: "btn-primary p-2", style:"box-shadow: 4px 4px 10px rgba(0,0,0,.1); border-radius: 5px") %>
         <% end %>
       </div>
-      <div>
-      </div>
     </div>
-    <br>
-    <%= image_tag("undraw_visual_data_b1wx (2).png", :class =>" new_report_image rounded float-right") %>
+  </div>
+    <%= image_tag("undraw_visual_data_b1wx.png", :class =>" new_report_image rounded float-right") %>
 </main>

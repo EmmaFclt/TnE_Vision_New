@@ -13,21 +13,28 @@
               <%=column_chart @cities, {colors:["#aad", "#dd0", "#aad", "#fb2"], download: {background: "#F9FBFD"} }%>
             </div>
             <div class="col-4">
-              <h3>Description</h3>
+              <h3 class ='text-primary'>Description</h3>
               <br>
-              <p>Top 5 des villes ou régions pour lesquelles le volume de dépenses est le plus élevé.</p>
-              <div class="icons-right">
-                <div>
-                    <%= link_to addfavorite_path(params: { graph: 'top-cities' }) do %>
-                      <% if current_user.favorites.include?('top-cities') %>
-                         <i class="fas fa-heart"></i>
-                      <% else %>
-                         <i class="far fa-heart"></i>
-                      <% end %>
-                      <% end %>
+              <p class ='text-primary'>Top 5 des villes ou régions pour lesquelles le volume de dépenses est le plus élevé.</p>
+              <br>
+              <br>
+              <br>
+              <div class="d-flex justify-content-center">
+                <div class="mr-4">
+                  <%= link_to addfavorite_path(params: { graph: 'top-cities' }) do %>
+                    <% if current_user.favorites.include?('top-cities') %>
+                      <div class="btn btn-secondary">
+                        <i class="fas fa-heart text-primary"></i>
+                      </div>
+                    <% else %>
+                      <div class="btn btn-secondary">
+                        <i class="far fa-heart text-primary"></i>
+                      </div>
+                    <% end %>
+                  <% end %>
                 </div>
-                <div>
-                  <p class="text-primary" data-toggle="modal" data-target="#Graph5_mail">@</p>
+                <div  class="btn btn-secondary">
+                  <p class="text-primary mb-0" data-toggle="modal" data-target="#Graph1_mail" style="font-size: 17.3px"><b>@</b></p>
                 </div>
               </div>
            </div>
