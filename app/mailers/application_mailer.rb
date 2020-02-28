@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'christian@heineken.fr'
+  default from: 'mailer.tnevision@gmail.com'
   layout 'mailer'
 end

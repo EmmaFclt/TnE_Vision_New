@@ -7,9 +7,9 @@
   <br>
   <div class="row around-xs">
     <div class="col-xs-2 card-chart mb-4 mr-4">
-      <div class="box">
-        <%= form_tag('/import',method: :post, multipart: true) do %>
+      <div class="box text-primary">
         <%= file_field_tag :file %>
+        <%= form_tag('/import',method: :post, multipart: true) do %>
       </div>
     </div>
     <div class="col-xs-2 card-chart mb-4 mr-4">
