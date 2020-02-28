@@ -13,21 +13,28 @@
               <%= column_chart @transactions_count_week, {colors:["#9be"], download: true} %>
             </div>
             <div class="col-4">
-              <h3>Description</h3>
+              <h3 class ='text-primary'>Description</h3>
               <br>
-              <p>Total des réservations faites en fonction des jours de la semaine.</p>
-              <div class="icons-right">
-                <div>
+              <p class ='text-primary'>Total des réservations faites en fonction des jours de la semaine.</p>
+              <br>
+              <br>
+              <br>
+              <div class="d-flex justify-content-center">
+                <div class="mr-4">
                   <%= link_to addfavorite_path(params: { graph: 'nb-reservation-per-day' }) do %>
                     <% if current_user.favorites.include?('nb-reservation-per-day') %>
-                      <i class="fas fa-heart"></i>
+                          <div class="btn btn-secondary">
+                            <i class="fas fa-heart text-primary"></i>
+                          </div>
                     <% else %>
-                      <i class="far fa-heart"></i>
+                      <div class="btn btn-secondary">
+                        <i class="far fa-heart text-primary"></i>
+                      </div>
                     <% end %>
                 <% end %>
              </div>
-             <div>
-              <p class="text-primary" data-toggle="modal" data-target="#Graph2_mail">@</p>
+            <div  class="btn btn-secondary">
+              <p class="text-primary mb-0" data-toggle="modal" data-target="#Graph1_mail" style="font-size: 17.3px"><b>@</b></p>
             </div>
             </div>
           </div>

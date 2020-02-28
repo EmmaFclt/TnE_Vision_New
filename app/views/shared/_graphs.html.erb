@@ -1,7 +1,7 @@
   <% if @company.transactions.count != 0 %>
     <div class="row mb-4">
       <% if current_user.favorites.include?('top-cities') || params[:action] == 'dashboard' %>
-        <div class="col-xs-12 col-sm-4 d-flex align-items-end">
+        <div class="col-xs-12 col-sm-4">
           <div class="card-chart" data-toggle="modal" data-target="#Top_cities_card">
             <h6 class="text-center">Top villes</h6>
             <%=column_chart @cities, {colors:["#aad", "#dd0", "#aad", "#fb2"], download: {background: "#F9FBFD"} }%>

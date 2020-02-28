@@ -14,23 +14,30 @@
               <%= bar_chart @company.top_5_travellers, {colors:["#dd0", "#dd0", "#aad", "#fb2"], download: true }%>
             </div>
             <div class="col-4">
-              <h3>Description</h3>
+              <h3 class="text-primary">Description</h3>
               <br>
-              <p>Cumul du nombre de prestations achetées par voyageur.</p>
-              <div class="icons-right">
-                <div>
-                  <%= link_to addfavorite_path(params: { graph: 'top-travellers' }) do %>
-                      <% if current_user.favorites.include?('top-travellers') %>
-                        <i class="fas fa-heart"></i>
-                      <% else %>
-                        <i class="far fa-heart "></i>
-                      <% end %>
-                  <% end %>
+              <p class ='text-primary'>Cumul du nombre de prestations achetées par voyageur.</p>
+              <br>
+              <br>
+              <br>
+                <div class="d-flex justify-content-center">
+                  <div class="mr-4">
+                    <%= link_to addfavorite_path(params: { graph: 'top-travellers' }) do %>
+                        <% if current_user.favorites.include?('top-travellers') %>
+                          <div class="btn btn-secondary">
+                            <i class="fas fa-heart text-primary"></i>
+                          </div>
+                        <% else %>
+                          <div class="btn btn-secondary">
+                            <i class="far fa-heart text-primary"></i>
+                          </div>
+                        <% end %>
+                    <% end %>
+                  </div>
+                  <div  class="btn btn-secondary">
+                    <p class="text-primary mb-0" data-toggle="modal" data-target="#Graph1_mail" style="font-size: 17.3px"><b>@</b></p>
+                  </div>
                 </div>
-                <div>
-                  <p class="text-primary" data-toggle="modal" data-target="#Graph1_mail">@</p>
-                </div>
-              </div>
             </div>
           </div>
         </div>

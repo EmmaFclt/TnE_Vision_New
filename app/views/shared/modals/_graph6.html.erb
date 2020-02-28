@@ -1,4 +1,4 @@
-<div class="modal fade" id="cumul_total_spend_card" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ class ='text-primary'<div class="modal fade" id="cumul_total_spend_card" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content p-2" style="width: 150%">
       <div class="modal-header">
@@ -13,27 +13,34 @@
              <%= column_chart @company.amount_per_month, {format: "%b", download: true, colors: ["#9be"]}  %>
           </div>
           <div class="col-4">
-            <h3>Description</h3>
+            <h3 class ='text-primary'>Description</h3>
             <br>
-            <p>Montant total des dépenses cumulées mois par mois. Vs Budget alloué.</p>
-            <div class="icons-right">
-              <div>
+            <p class ='text-primary'>Montant total des dépenses cumulées mois par mois. Vs Budget alloué.</p>
+            <br>
+            <br>
+            <br>
+            <div class="d-flex justify-content-center">
+              <div class="mr-4">
                 <%= link_to addfavorite_path(params: { graph: 'cumul_total_spend' }) do %>
                  <% if current_user.favorites.include?('cumul_total_spend') %>
-                    <i class="fas fa-heart"></i>
+                    <div class="btn btn-secondary" style="background-color: #FFFFFF">
+                      <i class="fas fa-heart text-primary"></i>
+                    </div>
                   <% else %>
-                    <i class="far fa-heart"></i>
+                    <div class="btn btn-secondary" style="background-color: #FFFFFF">
+                      <i class="far fa-heart text-primary"></i>
+                    </div>
                   <% end %>
                 <% end %>
               </div>
-            <div>
-            <p class="text-primary" data-toggle="modal" data-target="#Graph6_mail">@</p>
-          </div>
+              <div  class="btn btn-secondary" style="background-color: #FFFFFF">
+                <p class="text-primary mb-0" data-toggle="modal" data-target="#Graph1_mail" style="font-size: 17.3px"><b>@</b></p>
+              </div>
+             </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 <!--MailerModal -->
   <div class="modal fade" id="Graph6_mail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
