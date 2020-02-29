@@ -5,33 +5,56 @@
   </div>
   <hr>
   <br>
+
+  <div class="row">
+    <div class="col-8">
   <div class="row around-xs">
-    <div class="col-xs-2 card-chart mb-4 mr-4">
+    <div class="col-xs-2 card-chart mr-12 pl-20">
       <div class="box text-primary">
         <%= form_tag('/import',method: :post, multipart: true) do %>
         <%= file_field_tag :file %>
       </div>
     </div>
-    <div class="col-xs-2 card-chart mb-4 mr-4">
+     </div>
+    <br>
+     <div class="row around-xs">
+    <div class="col-xs-2 card-chart mr-4">
       <div class="box text-primary">
-        <%= label_tag 'format' %>
-        <%= select_tag 'format', options_for_select([['Sélectionnez un format', 1], ['CSV', 2], ['PDF', 3], ['Excel', 4], ['Power Point', 5]])%>
+        <p><b>Sélectionnez un format</b></p>
+        <%#= select_tag 'format', options_for_select([['Sélectionnez un format', 1], ['CSV', 2], ['PDF', 3], ['Excel', 4], ['Power Point', 5]])%>
+        <% [['CSV', 1], ['PDF', 2], ['Excel', 3], ['Power Point', 4]].each do |format| %>
+          <%= check_box_tag "format-#{format[0]}", format[1] %>
+          <label><%= format[0] %></label>
+          <br>
+        <% end %>
+
+      </div>
+    </div>
+
+  <div class="row">
+    <div class="col-xs-2 card-chart ml-4">
+      <div class="box text-primary">
+        <p><b>Sélectionnez une source</b></p>
+        <% [['Comptabilité', 1], ['Agence de voyages', 2], ['ERP', 3], ['Notes de frais', 4], ['Moyen de paiement', 5]].each do |service| %>
+          <%= check_box_tag "service-#{service[0]}", service[1] %>
+          <label><%= service[0] %></label>
+          <br>
+        <% end %>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-xs-2 card-chart mb-4 mr-4">
-      <div class="box text-primary">
-        <%= label_tag 'source' %>
-        <%= select_tag 'source', options_for_select([['Sélectionnez une source', 1], ['Comptabilité', 2], ['Agence de voyages', 3], ['ERP', 4], ['Notes de frais', 5], ['Moyen de paiement', 6]])%>
-      </div>
-    </div>
-    <div class="col-xs-2">
-      <div class="box mt-3" style="box-shadow: 4px 4px 10px rgba(0,0,0,.1)">
+  </div>
+  <br>
+    <div class="row col-xs-2">
+      <div style="box-shadow: 4px 4px 10px rgba(0,0,0,.1)">
         <%= submit_tag( "Importer" , class: "btn-primary p-2", style:"box-shadow: 4px 4px 10px rgba(0,0,0,.1); border-radius: 5px") %>
         <% end %>
       </div>
     </div>
   </div>
-    <%= image_tag("undraw_visual_data_b1wx.png", :class =>" new_report_image rounded float-right") %>
+<div class="col-4">
+
+    <%= image_tag("undraw_visual_data_b1wx.png", :class =>" new_report_image rounded float-right float-bottom") %>
+</div>
+</div>
 </main>

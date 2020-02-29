@@ -62,13 +62,13 @@
               <span>Dép. Globales</span>
             </a>
           </li>
-          <li class="sidebar-dropdown">
+          <li class="sidebar-dropdown <%= 'active' if params[:action] == 'wellbeing' %>">
            <a href="/wellbeing">
             <i class="fas fa-hands"></i>
             <span>Bien-être</span>
           </a>
         </li>
-        <li class="sidebar-dropdown">
+        <li class="sidebar-dropdown <%= 'active' if params[:action] == 'behaviour' %>">
           <a href="/behaviour">
             <i class="far fa-check-circle"></i>
             <span>Comportement</span>
@@ -80,7 +80,7 @@
             <span>Budget</span>
           </a>
         </li>
-        <li class="sidebar-dropdown">
+        <li class="sidebar-dropdown <%= 'active' if params[:action] == 'rse' %>">
           <a href="/rse">
             <i class="fa fa-globe"></i>
             <span>RSE</span>
@@ -95,13 +95,13 @@
         <li class="header-menu">
           <span>Extras</span>
         </li>
-        <li>
-          <a href="/reports/new">
+        <li class="sidebar-dropdown <%= 'active' if params[:action] == 'new' %>">
+          <a href="/reports/new" >
             <i class="fa fa-folder"></i>
             <span>Ajouter un fichier</span>
           </a>
         </li>
-        <li>
+        <li class="sidebar-dropdown <%= 'active' if params[:action] == 'profil' %>">
           <a href="/profil">
             <i class="fas fa-user"></i>
             <span>Profil</span>
@@ -113,7 +113,6 @@
               <span>Calendar</span>
             </a>
           </li> -->
-      <%  %>
         </ul>
       </div>
       <!-- sidebar-menu  -->

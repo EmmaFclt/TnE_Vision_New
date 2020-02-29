@@ -302,6 +302,10 @@
   transform: rotate(90deg);
   right: 17px;
 }
+.sidebar-dropdown:hover span,
+.sidebar-dropdown.active span {
+    color: #f28437;
+}
 
 /*--------------------------side-footer------------------------------*/
 
