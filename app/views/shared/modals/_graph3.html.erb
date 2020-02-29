@@ -23,11 +23,11 @@
                 <div class="mr-4">
                   <%= link_to addfavorite_path(params: { graph: 'type-spendings' }) do %>
                   <% if current_user.favorites.include?('type-spendings') %>
-                    <div class="btn btn-secondary" data-dismiss="modal">
+                    <div class="btn btn-secondary">
                       <i class="fas fa-heart text-primary"></i>
                     </div>
                   <% else %>
-                    <div class="btn btn-secondary" data-dismiss="modal">
+                    <div class="btn btn-secondary">
                       <i class="far fa-heart text-primary"></i>
                     </div>
                   <% end %>
