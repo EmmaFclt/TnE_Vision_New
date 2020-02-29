@@ -23,11 +23,11 @@
                 <div class="mr-4">
                   <%= link_to addfavorite_path(params: { graph: 'nb-reservation-per-day' }) do %>
                     <% if current_user.favorites.include?('nb-reservation-per-day') %>
-                          <div class="btn btn-secondary"  data-dismiss="modal">
-                            <i class="fas fa-heart text-primary"></i>
-                          </div>
+                      <div class="btn btn-secondary">
+                        <i class="fas fa-heart text-primary"></i>
+                      </div>
                     <% else %>
-                      <div class="btn btn-secondary"  data-dismiss="modal">
+                      <div class="btn btn-secondary">
                         <i class="far fa-heart text-primary"></i>
                       </div>
                     <% end %>

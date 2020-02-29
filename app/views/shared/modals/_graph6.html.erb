@@ -23,11 +23,11 @@
               <div class="mr-4">
                 <%= link_to addfavorite_path(params: { graph: 'cumul_total_spend' }) do %>
                  <% if current_user.favorites.include?('cumul_total_spend') %>
-                    <div class="btn btn-secondary " style="background-color: #FFFFFF" data-dismiss="modal">
+                    <div class="btn btn-secondary " style="background-color: #FFFFFF">
                       <i class="fas fa-heart text-primary"></i>
                     </div>
                   <% else %>
-                    <div class="btn btn-secondary " style="background-color: #FFFFFF" data-dismiss="modal">
+                    <div class="btn btn-secondary " style="background-color: #FFFFFF">
                       <i class="far fa-heart text-primary"></i>
                     </div>
                   <% end %>
