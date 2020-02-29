@@ -14,7 +14,7 @@ p 'destroying previous data'
 
 
 
-company=Company.create!(name:"Heineken", logo:"HK", address:"2 rue de Martinets", budget: 10000)
+company=Company.create!(name:"Heineken", logo:"HK", address:"2 rue de Martinets", budget: 100000)
 User.create!(first_name:"Emma", last_name:"Foucault", password:"123456", email:"emma@heineken.fr", company:company)
 
 
