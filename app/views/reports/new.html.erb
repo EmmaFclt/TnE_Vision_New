@@ -9,7 +9,7 @@
   <div class="row">
     <div class="col-8">
   <div class="row around-xs">
-    <div class="col-xs-2 card-chart mr-12 pl-20">
+    <div class="col-xs-2 card-chart mr-12 pl-20" style="width: 57%;">
       <div class="box text-primary">
         <%= form_tag('/import',method: :post, multipart: true) do %>
         <%= file_field_tag :file %>
@@ -22,12 +22,18 @@
       <div class="box text-primary">
         <p><b>Sélectionnez un format</b></p>
         <%#= select_tag 'format', options_for_select([['Sélectionnez un format', 1], ['CSV', 2], ['PDF', 3], ['Excel', 4], ['Power Point', 5]])%>
-        <% [['CSV', 1], ['PDF', 2], ['Excel', 3], ['Power Point', 4]].each do |format| %>
-          <%= check_box_tag "format-#{format[0]}", format[1] %>
-          <label><%= format[0] %></label>
-          <br>
-        <% end %>
 
+        <%= radio_button_tag :format, 'CSV' %>
+        <label for="format_CSV">CSV</label>
+        <br>
+        <%= radio_button_tag :format, 'PDF' %>
+        <label for="format_PDF">PDF</label>
+        <br>
+        <%= radio_button_tag :format, 'Excel' %>
+        <%= label :format, 'Excel' %>
+        <br>
+        <%= radio_button_tag :format, 'Power Point' %>
+        <%= label :format, 'Power Point' %>
       </div>
     </div>
 
@@ -35,11 +41,18 @@
     <div class="col-xs-2 card-chart ml-4">
       <div class="box text-primary">
         <p><b>Sélectionnez une source</b></p>
-        <% [['Comptabilité', 1], ['Agence de voyages', 2], ['ERP', 3], ['Notes de frais', 4], ['Moyen de paiement', 5]].each do |service| %>
-          <%= check_box_tag "service-#{service[0]}", service[1] %>
-          <label><%= service[0] %></label>
-          <br>
-        <% end %>
+        <%= radio_button_tag :source, 'Comptabilité' %>
+        <%= label :source, 'Comptabilité' %>
+        <br>
+        <%= radio_button_tag :source, 'Agence de voyages' %>
+        <%= label :source, 'Agence de voyages' %>
+        <br>
+        <%= radio_button_tag :source, 'Notes de frais' %>
+        <%= label :source, 'Notes de frais' %>
+        <br>
+        <%= radio_button_tag :source, 'Moyen de paiement' %>
+        <%= label :source, 'Moyen de paiement' %>
+
       </div>
     </div>
   </div>
