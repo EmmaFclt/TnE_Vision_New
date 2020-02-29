@@ -7,7 +7,6 @@ const initSweetAlert = () => {
       title: 'Bravo!',
       text: 'Votre mail a été envoyé avec succès.',
       icon: 'success',
-      confirmButtonText: 'Cool'
     })
   })
 }
