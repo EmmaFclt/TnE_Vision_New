@@ -8,8 +8,8 @@
   <div class="row around-xs">
     <div class="col-xs-2 card-chart mb-4 mr-4">
       <div class="box text-primary">
-        <%= file_field_tag :file %>
         <%= form_tag('/import',method: :post, multipart: true) do %>
+        <%= file_field_tag :file %>
       </div>
     </div>
     <div class="col-xs-2 card-chart mb-4 mr-4">

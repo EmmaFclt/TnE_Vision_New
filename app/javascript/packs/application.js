@@ -5,6 +5,7 @@ require("chart.js")
 // require("@rails/activestorage").start()
 import "bootstrap";
 import {slideSidebar} from "../components/sidebar";
+import initSweetAlert from "../components/init_sweetalert2"
 //import {initDownloadModal} from "../components/modal_download";
 // import {dateFilter, entityFilter, compliancyFilter, serviceFilter} from "../components/filter";
 // require("channels")
@@ -32,6 +33,7 @@ import {slideSidebar} from "../components/sidebar";
 //   $(".page-wrapper").addClass("toggled");
 // });
 // Chartkick.options[:content_for] = :charts_js
+initSweetAlert();
 slideSidebar();
 //initDownloadModal();
 // // dateFilter();
