@@ -23,18 +23,18 @@
                 <div class="mr-4">
                   <%= link_to addfavorite_path(params: { graph: 'type-spendings' }) do %>
                   <% if current_user.favorites.include?('type-spendings') %>
-                    <div class="btn btn-secondary">
+                    <div class="btn btn-secondary" data-dismiss="modal">
                       <i class="fas fa-heart text-primary"></i>
                     </div>
                   <% else %>
-                    <div class="btn btn-secondary">
+                    <div class="btn btn-secondary" data-dismiss="modal">
                       <i class="far fa-heart text-primary"></i>
                     </div>
                   <% end %>
                 <% end %>
               </div>
-              <div  class="btn btn-secondary">
-                <p class="text-primary mb-0" data-toggle="modal" data-target="#Graph1_mail" style="font-size: 17.3px"><b>@</b></p>
+              <div  class="btn btn-secondary" data-dismiss="modal">
+                <p class="text-primary mb-0" data-toggle="modal" data-target="#Graph3_mail" style="font-size: 17.3px"><b>@</b></p>
               </div>
             </div>
           </div>
@@ -44,7 +44,7 @@
   </div>
 </div>
 <!--MailerModal -->
-  <div class="modal fade" id="Graph3_mail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade graph-mail-modal" id="Graph3_mail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content" style="width: 150%">
         <div class="modal-header">
@@ -60,7 +60,9 @@
           <%= simple_form_for :mail, url: sendmail_path(params: {graph: 'graph3', titre: 'Catégories de dépenses', description: 'Répartition des dépenses totales en valeur par typologie de prestations.'}), method: :post do |f| %>
             <%= f.input :email, label: 'Adresse mail du destinataire:' %>
             <%= f.input :body, as: :text, label: 'Votre commentaire ici:' %>
-            <%= f.submit "Envoi", class: "btn btn-primary justify-content-space-betwenn" %>
+            <div data-dismiss="modal">
+              <%= f.submit "Envoi", class: "btn btn-primary justify-content-space-betwenn graph-btn" %>
+            </div>
           <% end %>
         </div>
       </div>
