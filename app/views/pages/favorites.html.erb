@@ -5,16 +5,16 @@
   </div>
 
   <hr>
-<div class="d-flex my-4">
+  <div class="d-flex my-4">
     <%= simple_form_for :filter, url: root_path, method: :get do |f| %>
 
       <div class="btn mx-2 dropdown">
         <button class="btn btn-secondary dropdown-toggle text-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Conformité
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-menu"  style="width: auto;" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="#">
-            <%= f.input :compliancy, as: :boolean %>
+            <%= f.input :compliancy, as: :boolean, label: 'Non-conforme' %>
           </a>
         </div>
       </div>
@@ -23,7 +23,7 @@
         <button class="btn btn-secondary dropdown-toggle text-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Entité
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-menu" style="width: auto;" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="#">
             <%= f.input :entity, :collection => @entities, wrapper_html: { class: 'form-group' }, :as => :check_boxes, :multiple => true, include_hidden: false, :label => false%>
           </a>
@@ -34,7 +34,7 @@
         <button class="btn btn-secondary dropdown-toggle text-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Service
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-menu" style="width: auto;" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="#">
             <%= f.input :service, :collection => @services, wrapper_html: { class: 'form-group' }, :as => :check_boxes, :multiple => true, include_hidden: false %>
           </a>
@@ -45,7 +45,7 @@
         <button class="btn btn-secondary dropdown-toggle text-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Date
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-menu" style="width: auto;" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item date" href="#">
             <%= f.input :start_date, as: :date%>
           </a>
